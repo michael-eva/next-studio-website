@@ -1,6 +1,24 @@
 import CollaborationsCarousel from './components/CollaborationsCarousel'
 
 export default function Home() {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        window.location.href = data.redirectUrl;
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
 
   return (
     <div className="bg-gray-50">
@@ -169,7 +187,12 @@ export default function Home() {
               <p className="text-md pb-2 leading-relaxed">
                 We look forward to helping you. Send us a message with as much detail as possible, and we will get back to you shortly. Our team is dedicated to providing you with the best service and support to turn your vision into reality.
               </p>
-              <form action="/api/contact" method="POST" className="space-y-6 bg-white p-8 rounded-lg shadow-lg text-left text-black">
+              <form
+                onSubmit={handleSubmit}
+                action="https://formspree.io/f/xpwqrqyj"
+                method="POST"
+                className="space-y-6 bg-white p-8 rounded-lg shadow-lg text-left text-black"
+              >
                 <div>
                   <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
                   <input type="text" id="name" name="name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300" />

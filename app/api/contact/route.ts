@@ -27,10 +27,11 @@ export async function POST(request: NextRequest) {
       message: message.toString(),
     });
 
-    // Redirect to success page
-    return NextResponse.redirect(
-      new URL(`${origin}/success/contact-form-submission`, request.url)
-    );
+    // Instead of redirect, return a success response with the redirect URL
+    return NextResponse.json({
+      success: true,
+      redirectUrl: `/success/contact-form-submission`,
+    });
   } catch (error) {
     console.error("Form submission error:", error);
     return NextResponse.json(
