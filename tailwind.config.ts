@@ -19,8 +19,8 @@ const config: Config = {
         },
       },
       animation: {
-        "infinite-scroll": "scroll 10s linear infinite",
-        "infinite-scroll-xs": "scroll 5s linear infinite",
+        "infinite-scroll": "scroll 20s linear infinite",
+        "infinite-scroll-xs": "scroll 7s linear infinite",
       },
     },
   },
