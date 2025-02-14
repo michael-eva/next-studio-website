@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circles -->
+  <circle cx="200" cy="200" r="180" fill="#EBF5FF" opacity="0.3"/>
+  <circle cx="200" cy="200" r="140" fill="#BFDBFE" opacity="0.3"/>
+  
+  <!-- Envelope base -->
+  <path d="M100 140 L300 140 L300 260 L100 260 Z" fill="white" stroke="#2563EB" stroke-width="4"/>
+  
+  <!-- Envelope flap -->
+  <path d="M100 140 L200 200 L300 140" fill="none" stroke="#2563EB" stroke-width="4"/>
+  
+  <!-- Message lines -->
+  <line x1="140" y1="180" x2="260" y2="180" stroke="#93C5FD" stroke-width="4"/>
+  <line x1="140" y1="200" x2="260" y2="200" stroke="#93C5FD" stroke-width="4"/>
+  <line x1="140" y1="220" x2="220" y2="220" stroke="#93C5FD" stroke-width="4"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="160" cy="280" r="10" fill="#3B82F6"/>
+  <circle cx="200" cy="280" r="10" fill="#2563EB"/>
+  <circle cx="240" cy="280" r="10" fill="#1D4ED8"/>
+  
+  <!-- Animated elements -->
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    #envelope {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+  <g id="envelope">
+    <path d="M100 140 L200 200 L300 140 L300 260 L100 260 Z" fill="none" stroke="#2563EB" stroke-width="4"/>
+  </g>
+</svg>

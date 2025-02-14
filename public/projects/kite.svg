@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+  <!-- Kite emoji -->
+  <text x="25" y="35" font-size="30">🪁</text>
+  
+  <!-- Text "kite" -->
+  <text x="65" y="35" font-family="Arial" font-weight="bold" font-size="30" fill="black">kite</text>
+  
+  <!-- Colored period -->
+  <circle cx="120" cy="35" r="3" fill="#8792F7"/>
+  
+  <!-- Text "site" -->
+  <text x="125" y="35" font-family="Arial" font-weight="bold" font-size="30" fill="black">site</text>
+</svg>
