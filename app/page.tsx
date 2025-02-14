@@ -1,25 +1,7 @@
 import CollaborationsCarousel from './components/CollaborationsCarousel'
+import ContactForm from './components/ContactForm'
 
 export default function Home() {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        window.location.href = data.redirectUrl;
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
-  };
-
   return (
     <div className="bg-gray-50">
       {/* Navigation */}
@@ -179,7 +161,6 @@ export default function Home() {
       <section id="contact" className="py-16 bg-blue-600 text-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Start Your Journey</h2>
-          {/* <p className="text-xl text-center mb-12">Book your free discovery call today and get a clear roadmap to your MVP in 15 minutes.</p> */}
 
           <div className="grid md:grid-cols-2 gap-10">
             {/* Contact Form */}
@@ -187,28 +168,7 @@ export default function Home() {
               <p className="text-md pb-2 leading-relaxed">
                 We look forward to helping you. Send us a message with as much detail as possible, and we will get back to you shortly. Our team is dedicated to providing you with the best service and support to turn your vision into reality.
               </p>
-              <form
-                onSubmit={handleSubmit}
-                action="https://formspree.io/f/xpwqrqyj"
-                method="POST"
-                className="space-y-6 bg-white p-8 rounded-lg shadow-lg text-left text-black"
-              >
-                <div>
-                  <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
-                  <input type="text" id="name" name="name" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
-                  <input type="email" id="email" name="_replyto" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300" />
-                </div>
-                <label htmlFor="subject" className="block text-gray-700 font-semibold mb-2">Subject</label>
-                <input type="text" id="subject" name="subject" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300" />
-                <div>
-                  <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
-                  <textarea id="message" name="message" rows={5} required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300"></textarea>
-                </div>
-                <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md">Send Message</button>
-              </form>
+              <ContactForm />
             </div>
             {/* Additional Information */}
             <div className="flex items-center justify-end">
