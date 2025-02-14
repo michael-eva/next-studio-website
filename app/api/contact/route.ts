@@ -2,11 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { submitContactForm } from "./helper";
 
-// Define accepted HTTP methods
-export const runtime = "edge"; // Optional: Use edge runtime for better performance
-export const dynamic = "force-dynamic"; // Ensure the route is dynamic
-export const allowedMethods = ["POST"]; // Explicitly state allowed methods
-
 // Add GET handler to return a proper error response
 export async function GET() {
   return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
