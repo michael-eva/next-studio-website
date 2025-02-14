@@ -2,14 +2,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { submitContactForm } from "./helper";
 
-// Add GET handler to return a proper error response
-export async function GET() {
-  return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
-}
-
 export async function POST(request: NextRequest) {
   try {
     // Get the form data
+    const { origin } = new URL(request.url);
     const formData = await request.formData();
     const name = formData.get("name");
     const email = formData.get("_replyto");
@@ -33,7 +29,7 @@ export async function POST(request: NextRequest) {
 
     // Redirect to success page
     return NextResponse.redirect(
-      new URL("/success/contact-form-submission", request.url)
+      new URL(`${origin}/success/contact-form-submission`, request.url)
     );
   } catch (error) {
     console.error("Form submission error:", error);
