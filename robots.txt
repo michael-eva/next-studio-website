@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /api/
 Allow: /
 
-Sitemap: https://www.extensa.studio/api/sitemap 
+Sitemap: https://www.extensa.studio/sitemap.xml 
