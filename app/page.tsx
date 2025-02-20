@@ -2,33 +2,10 @@ import CollaborationsCarousel from './components/CollaborationsCarousel'
 import ContactForm from './components/ContactForm'
 
 export default function Home() {
+  console.log('Home');
+
   return (
     <div className="bg-gray-50">
-      {/* Navigation */}
-      <header className="bg-white shadow-lg fixed w-full z-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <a href="#" className="flex items-center">
-                <img src="extensa-logo.png" alt="Extensa Logo" className="h-12" />
-                <p className="text-2xl font-bold text-blue-600">Extensa</p>
-              </a>
-            </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#services" className="text-gray-600 hover:text-gray-900 transition duration-300">Services</a>
-              <a href="#approach" className="text-gray-600 hover:text-gray-900 transition duration-300">Our Approach</a>
-              <a href="#industries" className="text-gray-600 hover:text-gray-900 transition duration-300">Industries</a>
-            </nav>
-            <div>
-              <a href="#contact"
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
-                Get in touch
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <main>
         <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white pt-24">
