@@ -64,9 +64,7 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        <div className="pb-20">
-          <Navbar />
-        </div>
+        <Navbar />
         {children}
       </body>
     </html>

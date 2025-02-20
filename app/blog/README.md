@@ -1,38 +1,66 @@
-To enter a blog post, you need to create a new directory under `app/blog/` with your post's slug name:
+# Blog Post Creation Guide
 
+## Directory Structure
+
+```
 app/blog/
 └── your-post-slug/
-├── metadata.json
-├── page.tsx
-└── (images)/ # Optional: for post images
+    ├── metadata.json
+    └── page.tsx
 
-the metadata.json file should contain the following fields:
+public/blog/
+└── your-post-slug/
+    └── images/
+        └── your-image.png
+```
+
+## 1. Metadata File
+
+Create `metadata.json`:
 
 ```json
 {
   "title": "Your Post Title",
   "description": "Your Post Description",
   "category": "Your Post Category",
-  "date": "2024-01-01",
-  "author": "Your Name"
+  "date": "DD-MM-YYYY",
+  "author": "Your Name",
+  "image": "/blog/your-post-slug/your-image.png" // Path relative to public/
 }
 ```
 
-The page.tsx file should contain the actual content of the post.
+## 2. Content File
 
-There is a component called `Layout.tsx` that is used to wrap the post content. It contains the navigation links at the bottom of the post.
-The Layout props are:
+Create `page.tsx`:
 
-Title: The title of the post
-Description: The description of the post
-Keywords: The keywords of the post - used for SEO
+```tsx
+import Layout from "../components/Layout";
 
-Your blog should start with the <article> tag for SEO reasons.
+export default function BlogPost() {
+  return (
+    <Layout
+      title="Your Post Title"
+      description="Your meta description for SEO"
+      keywords={["relevant", "keywords"]}
+    >
+      <article className="prose prose-blue max-w-none">
+        <p>Your content here...</p>
+      </article>
+    </Layout>
+  );
+}
+```
 
-The images directory is optional and can be used to store images for the post.
+## 3. Images
 
-The time taken to read is automatically calculated based on the word count of the post.
+- Place blog images in `public/blog/your-post-slug/`
+- Reference them in metadata as `/blog/your-post-slug/image-name.png`
+- Images will appear in the blog index cards and can be used in posts
 
-The post is automatically added to the blog page and the sitemap.
+## Features
 
-The order of the posts is determined by the date of the post - earliest first.
+- Auto-calculated reading time
+- Automatic navigation between posts
+- SEO optimization
+- Posts sorted by date (DD-MM-YYYY format)
+- Automatic blog index and sitemap updates
