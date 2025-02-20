@@ -2,6 +2,8 @@ import CollaborationsCarousel from './components/CollaborationsCarousel'
 import ContactForm from './components/ContactForm'
 
 export default function Home() {
+  console.log('Home');
+
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}

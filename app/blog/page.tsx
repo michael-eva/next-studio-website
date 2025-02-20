@@ -1,30 +1,85 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
+import Image from 'next/image';
+import { CalendarDays, Clock, User, Tag } from 'lucide-react';
+import { getAllBlogPosts } from '../utils/blog-utils';
 
 export default function Blog() {
-    // Get all subdirectories in the blog folder
-    const blogPath = path.join(process.cwd(), 'app/blog');
-    const items = fs.readdirSync(blogPath, { withFileTypes: true });
-    const directories = items
-        .filter(item => item.isDirectory())
-        .filter(item => item.name !== 'api') // Exclude api folder if exists
-        .map(item => item.name);
-
+    const posts = getAllBlogPosts();
+    console.log(posts);
+    const getImagePath = (imagePath: string) => {
+        // If it's already an absolute path, return as is
+        if (imagePath.startsWith('/')) {
+            return imagePath;
+        }
+        // Otherwise, ensure it starts with a forward slash
+        return `/${imagePath}`;
+    };
     return (
-        <div className="min-h-screen bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <h1 className="text-3xl font-bold text-gray-900 mb-8">Blog</h1>
-                <ul className="space-y-4">
-                    {directories.map((dir) => (
-                        <li key={dir}>
-                            <Link href={`/blog/${dir}`} className="text-gray-600 hover:text-gray-900 transition duration-300">
-                                {dir}
-                            </Link>
-                        </li>
+        <div className="bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 className="text-4xl font-bold text-gray-900 mb-8">Blog</h1>
+
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {posts.map((post) => (
+                        <Link
+                            key={post.slug}
+                            href={`/blog/${post.slug}`}
+                            className="block h-full"
+                        >
+                            <article className="h-full bg-gradient-to-br from-white to-blue-50 rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl hover:border-blue-200 hover:scale-[1.02] transition-all duration-300">
+                                {post.image && (
+                                    <div className="relative w-full h-48">
+                                        <Image
+                                            src={getImagePath(post.image)}
+                                            alt={post.title}
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                    </div>
+                                )}
+                                <div className="p-6">
+                                    <h2 className="text-2xl font-bold text-gray-900 hover:text-blue-600 mb-4">
+                                        {post.title}
+                                    </h2>
+
+                                    {post.description && (
+                                        <p className="text-gray-600 mb-6 line-clamp-2">
+                                            {post.description}
+                                        </p>
+                                    )}
+
+                                    <div className="flex flex-wrap gap-4 text-sm">
+                                        <div className="flex items-center gap-2 text-blue-600">
+                                            <CalendarDays className="w-4 h-4" />
+                                            <span>{new Date(post.date).toLocaleDateString()}</span>
+                                        </div>
+
+                                        {post.author && (
+                                            <div className="flex items-center gap-2 text-purple-600">
+                                                <User className="w-4 h-4" />
+                                                <span>{post.author}</span>
+                                            </div>
+                                        )}
+
+                                        {post.readingTime && (
+                                            <div className="flex items-center gap-2 text-green-600">
+                                                <Clock className="w-4 h-4" />
+                                                <span>{post.readingTime}</span>
+                                            </div>
+                                        )}
+
+                                        <div className="flex items-center gap-2 text-orange-600">
+                                            <Tag className="w-4 h-4" />
+                                            <span>{post.category}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </Link>
                     ))}
-                </ul>
+                </div>
             </div>
         </div>
-    )
+    );
 }
