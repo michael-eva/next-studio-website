@@ -135,6 +135,65 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Tech Stack Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
+              Our Tech Stack
+            </h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              While we're proficient in many technologies, these are some of our primary tools that help us deliver exceptional results for our clients.
+            </p>
+            <div className="grid md:grid-cols-4 gap-8">
+              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img
+                    src="/stack/next.svg"
+                    alt="Next.js"
+                    className="h-8 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Next.js</h3>
+                <p className="text-gray-600">React framework for production-grade applications</p>
+              </article>
+              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img
+                    src="/stack/bubble.svg"
+                    alt="Bubble"
+                    className="h-8 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Bubble</h3>
+                <p className="text-gray-600">Rapid full stack application and no-code solutions</p>
+              </article>
+              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img
+                    src="/stack/aws.png"
+                    alt="AWS"
+                    className="h-8 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">AWS</h3>
+                <p className="text-gray-600">Enterprise-level cloud infrastructure and hosting</p>
+              </article>
+              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div className="h-16 flex items-center justify-center mb-4">
+                  <img
+                    src="/stack/cursor.jpeg"
+                    alt="Cursor"
+                    className="h-8 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Cursor</h3>
+                <p className="text-gray-600">AI-powered development for faster coding</p>
+              </article>
+
+            </div>
+          </div>
+        </section>
+
         {/* Start Your Journey Section */}
         <section id="contact" className="py-16 bg-blue-600 text-white">
           <div className="max-w-6xl mx-auto px-4">
