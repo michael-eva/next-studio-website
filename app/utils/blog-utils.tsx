@@ -54,7 +54,7 @@ export function getAllBlogPosts() {
                 ...metadata
             };
         })
-        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        .sort((a, b) => new Date(a.date.split('-').reverse().join('-')).getTime() - new Date(b.date.split('-').reverse().join('-')).getTime());
 
     return posts;
 }

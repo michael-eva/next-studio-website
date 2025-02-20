@@ -5,15 +5,6 @@ import { getAllBlogPosts } from '../utils/blog-utils';
 
 export default function Blog() {
     const posts = getAllBlogPosts();
-    console.log(posts);
-    const getImagePath = (imagePath: string) => {
-        // If it's already an absolute path, return as is
-        if (imagePath.startsWith('/')) {
-            return imagePath;
-        }
-        // Otherwise, ensure it starts with a forward slash
-        return `/${imagePath}`;
-    };
     return (
         <div className="bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +21,7 @@ export default function Blog() {
                                 {post.image && (
                                     <div className="relative w-full h-48">
                                         <Image
-                                            src={getImagePath(post.image)}
+                                            src={post.image}
                                             alt={post.title}
                                             fill
                                             className="object-cover"
@@ -52,7 +43,7 @@ export default function Blog() {
                                     <div className="flex flex-wrap gap-4 text-sm">
                                         <div className="flex items-center gap-2 text-blue-600">
                                             <CalendarDays className="w-4 h-4" />
-                                            <span>{new Date(post.date).toLocaleDateString()}</span>
+                                            <span>{new Date(post.date.split('-').reverse().join('-')).toLocaleDateString('en-GB')}</span>
                                         </div>
 
                                         {post.author && (

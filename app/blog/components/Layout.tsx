@@ -109,7 +109,7 @@ const Layout: React.FC<LayoutProps> = ({
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex flex-col sm:flex-row justify-between items-center">
                             <div className="text-sm mb-4 sm:mb-0">
-                                © 2024 Extensa Studio. All rights reserved.
+                                © 2025 Extensa Studio. All rights reserved.
                             </div>
                             <nav className="flex gap-6">
                                 <Link
