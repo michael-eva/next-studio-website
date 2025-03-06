@@ -33,7 +33,7 @@ const Layout: React.FC<LayoutProps> = ({
             fetchMetadata();
         }
     }, [slug]);
-
+    console.log(metadata);
     return (
         <>
             <Head>
@@ -55,7 +55,7 @@ const Layout: React.FC<LayoutProps> = ({
                                     <div className="flex items-center gap-3">
                                         <span className="font-medium">By {metadata.author}</span>
                                         <span className="text-gray-400">•</span>
-                                        <span>{new Date(metadata.date).toLocaleDateString()}</span>
+                                        <span>{metadata.date}</span>
                                         <span className="text-gray-400">•</span>
                                         <span className='flex items-center gap-1.5'>
                                             <Tag size={14} className="text-gray-500" />
