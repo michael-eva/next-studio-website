@@ -49,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({
                         <h1 className="text-4xl font-bold text-gray-900 mb-6">
                             {title}
                         </h1>
-                        {metadata && (
+                        {/* {metadata && (
                             <div className="my-8 border-t border-gray-200 pt-6">
                                 <div className="text-gray-600 text-sm">
                                     <div className="flex items-center gap-3">
@@ -64,7 +64,7 @@ const Layout: React.FC<LayoutProps> = ({
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        )} */}
                         {children}
 
                         {metadata?.navigation && (
