@@ -24,8 +24,8 @@ export default function Navbar() {
                     </div>
                     <nav className="hidden md:flex space-x-8">
                         <a href="/#services" className="text-gray-600 hover:text-gray-900 transition duration-300">Services</a>
-                        <a href="/#approach" className="text-gray-600 hover:text-gray-900 transition duration-300">Our Approach</a>
-                        <a href="/#industries" className="text-gray-600 hover:text-gray-900 transition duration-300">Industries</a>
+                        <a href="/#how-we-work" className="text-gray-600 hover:text-gray-900 transition duration-300">How We Work</a>
+                        <a href="/#case-studies" className="text-gray-600 hover:text-gray-900 transition duration-300">About</a>
                         <Link
                             href="/blog"
                             className={`${isBlogPage
@@ -63,7 +63,7 @@ export default function Navbar() {
                     <div className="hidden md:block">
                         <a href="/#contact"
                             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
-                            Get in touch
+                            Book a Free Consultation
                         </a>
                     </div>
                 </div>
@@ -74,15 +74,15 @@ export default function Navbar() {
                             className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300">
                             Services
                         </a>
-                        <a href="/#approach"
+                        <a href="/#how-we-work"
                             onClick={handleMenuItemClick}
                             className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300">
-                            Our Approach
+                            How We Work
                         </a>
-                        <a href="/#industries"
+                        <a href="/#case-studies"
                             onClick={handleMenuItemClick}
                             className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300">
-                            Industries
+                            About
                         </a>
                         <Link
                             href="/blog"
@@ -101,7 +101,7 @@ export default function Navbar() {
                             <a href="/#contact"
                                 onClick={handleMenuItemClick}
                                 className="block px-3 py-3 mt-2 text-white bg-blue-600 hover:bg-blue-700 transition duration-300 text-center rounded-lg mx-2">
-                                Get in touch
+                                Book a Free Consultation
                             </a>
                         </div>
                     </div>

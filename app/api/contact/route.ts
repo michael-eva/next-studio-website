@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { submitContactForm } from "./helper";
+import { sendEmail } from "@/app/services/resend";
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,6 +26,12 @@ export async function POST(request: NextRequest) {
       email: email.toString(),
       subject: subject.toString(),
       message: message.toString(),
+    });
+    // send the contact email to michael@extensa.studio
+    const responseEmail = await sendEmail({
+      to: "michael@extensa.studio",
+      subject: "New Contact Form Submission",
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`,
     });
 
     // Instead of redirect, return a success response with the redirect URL

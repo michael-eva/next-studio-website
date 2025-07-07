@@ -15,17 +15,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Extensa Studio - Turn Your Vision into Reality, Faster",
-  description: "Transform your startup idea into a market-ready product in as little as 6 weeks. We're not just developers – we're your technical co-founders who care about your success.",
+  title: "Extensa - Custom Software That Works the Way You Do",
+  description: "We help established businesses unlock productivity by customising their existing software to fit their exact processes—eliminating double handling, reducing admin, and enabling teams to focus on meaningful work.",
   openGraph: {
-    title: "Extensa Studio - Turn Your Startup Vision into Reality, Faster",
-    description: "Transform your startup idea into a market-ready product in as little as 6 weeks. We're your technical co-founders who care about your success.",
+    title: "Extensa - Custom Software for Established Businesses",
+    description: "Eliminate admin headaches and streamline your business with custom software solutions designed for your exact workflows. Perth-based team serving businesses worldwide.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Extensa Studio - Turn Your Startup Vision into Reality, Faster",
-    description: "Transform your startup idea into a market-ready product in as little as 6 weeks.",
+    title: "Extensa - Custom Software That Works the Way You Do",
+    description: "Streamline your business processes with custom software solutions. Workflow automation, integrations, and ongoing support.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
   }
 };
