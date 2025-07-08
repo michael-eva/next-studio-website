@@ -123,25 +123,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Case Studies Placeholder */}
+        {/* Testimonials */}
         <section id="case-studies" className="py-16 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-              Success Stories
+              Client Testimonials
             </h2>
-            <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">Real Results, Real Businesses</h3>
-              <p className="text-gray-600 mb-6">
-                We've helped businesses across Perth and Australia reduce admin time by up to 60%,
-                streamline their workflows, and unlock team productivity. Our solutions have delivered
-                measurable improvements in efficiency and staff satisfaction.
-              </p>
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <p className="text-blue-800 font-medium">Case studies coming soon</p>
-                <p className="text-blue-600 text-sm mt-2">
-                  We're currently working with several businesses to document their transformation stories.
-                  Contact us to learn more about how we can help your business achieve similar results.
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <div className="mb-6">
+                  <svg className="w-8 h-8 text-blue-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <p className="text-gray-700 text-lg mb-6 italic">
+                  "Michael and his team redesigned our website from scratch in under two weeks, exactly as we asked. Clean, fast, and nailed the details without endless back and forth. Couldn't have asked for a better job."
                 </p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+                    F
+                  </div>
+                  <div className="ml-4">
+                    <p className="font-semibold text-gray-800">Francois</p>
+                    <p className="text-gray-600">EPCA</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <div className="mb-6">
+                  <svg className="w-8 h-8 text-blue-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <p className="text-gray-700 text-lg mb-6 italic">
+                  "Extensa's professionalism and continual communication from the outset of their project work with us was outstanding. They delivered a fantastic product and were entirely transparent throughout the process. The quality of work is excellent and is delivered in efficient time. Their ability to understand the intentions and values of the companies they work with, and how the product should ultimately reflect this is first class."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+                    W
+                  </div>
+                  <div className="ml-4">
+                    <p className="font-semibold text-gray-800">Will</p>
+                    <p className="text-gray-600">Nectar</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
