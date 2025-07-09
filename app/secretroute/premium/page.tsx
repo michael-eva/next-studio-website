@@ -35,13 +35,7 @@ const PremiumDebugGuidePage: React.FC = () => {
 
         {/* Premium Framework Section */}
         <div className="mb-12">
-          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2">
-                <Star className="w-4 h-4" />
-                Premium Framework
-              </div>
-            </div>
+          <div className="bg-blue-100 rounded-2xl p-6 mb-6">
             <h2 className="text-2xl font-semibold text-gray-900 mb-2">
               8-Step Diagnostic Framework
             </h2>

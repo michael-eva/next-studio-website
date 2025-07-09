@@ -215,8 +215,8 @@ const CacheHelpModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
   );
 };
 
-// Step 0 Component - Quick Sanity Checks
-export const Step0QuickChecks = () => {
+// Quick Sanity Checks Modal Component
+const QuickSanityChecksModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const [checkedItems, setCheckedItems] = React.useState<Set<string>>(new Set());
   const [allChecked, setAllChecked] = React.useState(false);
   const [showCacheHelp, setShowCacheHelp] = React.useState(false);
@@ -237,15 +237,140 @@ export const Step0QuickChecks = () => {
     setAllChecked(false);
   };
 
+  if (!isOpen) return null;
+
   return (
-    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-8 mb-16 border border-emerald-200">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-emerald-600" />
+            </div>
+            <h2 className="text-2xl font-semibold text-gray-900">Quick Sanity Checks</h2>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+          >
+            <X className="w-5 h-5 text-gray-500" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <div className="mb-6">
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Before diving into systematic debugging, let's rule out common quick fixes.
+              These solve about <span className="font-semibold text-emerald-600">40% of issues</span>!
+            </p>
+          </div>
+
+          {/* Checklist */}
+          <div className="bg-gray-50 rounded-xl p-6 mb-6">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg font-medium text-gray-900">
+                Quick Checks ({checkedItems.size}/{quickChecks.length} completed)
+              </h3>
+              <button
+                onClick={resetChecks}
+                className="text-sm text-gray-500 hover:text-gray-700 underline transition-colors"
+              >
+                Reset all
+              </button>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+              {quickChecks.map((check) => {
+                const isChecked = checkedItems.has(check.id);
+                return (
+                  <div
+                    key={check.id}
+                    className={`flex items-start gap-3 p-4 rounded-lg border-2 transition-all duration-200 ${isChecked
+                      ? 'border-emerald-300 bg-emerald-50'
+                      : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-100'
+                      }`}
+                  >
+                    <label className="flex items-start gap-3 cursor-pointer flex-1">
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={() => toggleCheck(check.id)}
+                        className="w-5 h-5 text-emerald-600 rounded border-gray-300 focus:ring-emerald-500 focus:ring-2 mt-0.5"
+                      />
+                      <span className={`text-sm leading-relaxed ${isChecked ? 'text-emerald-800 line-through' : 'text-gray-700'
+                        }`}>
+                        {check.text}
+                      </span>
+                    </label>
+                    {check.hasHelp && (
+                      <button
+                        onClick={() => setShowCacheHelp(true)}
+                        className="ml-2 p-1 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded transition-colors flex-shrink-0"
+                        title="Get help with clearing cache and cookies"
+                      >
+                        <HelpCircle className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Success message */}
+            {allChecked && (
+              <div className="mt-6 p-4 bg-emerald-100 border border-emerald-300 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-emerald-600" />
+                  <span className="text-emerald-800 font-medium">Great! You've completed all quick checks.</span>
+                </div>
+                <p className="text-emerald-700 text-sm mt-2">
+                  If your issue persists, proceed to the systematic debugging steps below.
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="flex justify-end gap-3">
+            <button
+              onClick={onClose}
+              className="px-6 py-3 text-gray-600 hover:text-gray-800 font-medium transition-colors"
+            >
+              Continue to Debugging Steps
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Cache Help Modal */}
+      <CacheHelpModal isOpen={showCacheHelp} onClose={() => setShowCacheHelp(false)} />
+    </div>
+  );
+};
+
+// Step 0 Component - Quick Sanity Checks
+export const Step0QuickChecks = ({ autoShow = false }: { autoShow?: boolean }) => {
+  const [showSanityChecks, setShowSanityChecks] = React.useState(false);
+
+  // Auto-show the modal after a short delay (only if autoShow is true)
+  React.useEffect(() => {
+    if (!autoShow) return;
+
+    const timer = setTimeout(() => {
+      setShowSanityChecks(true);
+    }, 1500); // Show after 1.5 seconds
+
+    return () => clearTimeout(timer);
+  }, [autoShow]);
+
+  return (
+    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-8 mb-6 border border-emerald-200">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center">
-              <span className="text-xl font-medium text-white">0</span>
-            </div>
             <h2 className="text-2xl lg:text-3xl font-medium text-gray-900 tracking-tight">
               Quick Sanity Checks
             </h2>
@@ -254,74 +379,25 @@ export const Step0QuickChecks = () => {
             Before diving into systematic debugging, let's rule out common quick fixes.
             These solve about 40% of issues!
           </p>
-        </div>
-
-        {/* Checklist */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-medium text-gray-900">
-              Quick Checks ({checkedItems.size}/{quickChecks.length} completed)
-            </h3>
-            <button
-              onClick={resetChecks}
-              className="text-sm text-gray-500 hover:text-gray-700 underline transition-colors"
+          <button
+            onClick={() => setShowSanityChecks(true)}
+            className="inline-flex items-center gap-2 bg-green-200 text-green-900 px-6 py-3 rounded-xl font-medium hover:bg-green-300 transition-colors duration-200 text-base lg:text-lg mt-4"
+          >
+            <span>Open Quick Checks</span>
+            {/* <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              Reset all
-            </button>
-          </div>
-
-          <div className="grid gap-3 md:grid-cols-2">
-            {quickChecks.map((check) => {
-              const isChecked = checkedItems.has(check.id);
-              return (
-                <div
-                  key={check.id}
-                  className={`flex items-start gap-3 p-4 rounded-lg border-2 transition-all duration-200 ${isChecked
-                    ? 'border-emerald-300 bg-emerald-50'
-                    : 'border-gray-200 bg-gray-50 hover:border-gray-300 hover:bg-gray-100'
-                    }`}
-                >
-                  <label className="flex items-start gap-3 cursor-pointer flex-1">
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={() => toggleCheck(check.id)}
-                      className="w-5 h-5 text-emerald-600 rounded border-gray-300 focus:ring-emerald-500 focus:ring-2 mt-0.5"
-                    />
-                    <span className={`text-sm leading-relaxed ${isChecked ? 'text-emerald-800 line-through' : 'text-gray-700'
-                      }`}>
-                      {check.text}
-                    </span>
-                  </label>
-                  {check.hasHelp && (
-                    <button
-                      onClick={() => setShowCacheHelp(true)}
-                      className="ml-2 p-1 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded transition-colors flex-shrink-0"
-                      title="Get help with clearing cache and cookies"
-                    >
-                      <HelpCircle className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Success message */}
-          {allChecked && (
-            <div className="mt-6 p-4 bg-emerald-100 border border-emerald-300 rounded-lg">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-emerald-600" />
-                <span className="text-emerald-800 font-medium">Great! You've completed all quick checks.</span>
-              </div>
-              <p className="text-emerald-700 text-sm mt-2">
-                If your issue persists, proceed to the systematic debugging steps below.
-              </p>
-            </div>
-          )}
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg> */}
+          </button>
         </div>
       </div>
-      <CacheHelpModal isOpen={showCacheHelp} onClose={() => setShowCacheHelp(false)} />
+
+      {/* Quick Sanity Checks Modal */}
+      <QuickSanityChecksModal isOpen={showSanityChecks} onClose={() => setShowSanityChecks(false)} />
     </div>
   );
 };
@@ -522,7 +598,6 @@ const ErrorMessageModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
     </div>
   );
 };
-
 export const frameworkSteps = [
   {
     step: 1,
@@ -701,7 +776,7 @@ export const frameworkSteps = [
     action: (
       <>
         <div className="mb-6">Work through these dependency checklists systematically:</div>
-        
+
         {/* Dependency Checklists */}
         <div className="space-y-6">
           {/* User Permissions */}
@@ -828,6 +903,136 @@ export const frameworkSteps = [
     color: "from-teal-400 to-teal-600"
   }
 ];
+// Quick Reference Cards Data
+export const quickRefData = {
+  steps: frameworkSteps.map(step => ({
+    step: step.step,
+    title: step.title,
+    summary: typeof step.details === 'string'
+      ? step.details.split('\n')[0]
+      : `Think of your app like a simple flow of connected boxes. Each box represents a part that could break.`,
+    quickActions: [
+      step.step === 1 ? "Take screenshots of errors" :
+        step.step === 2 ? "Draw your app flow on paper" :
+          step.step === 3 ? "Test one component at a time" :
+            step.step === 4 ? "Focus on the failing part" :
+              step.step === 5 ? "Try in different browsers" :
+                step.step === 6 ? "Check permissions & API keys" :
+                  step.step === 7 ? "Prepare detailed description" :
+                    "Document the solution",
+
+      step.step === 1 ? "Check platform error logs" :
+        step.step === 2 ? "Identify where it breaks" :
+          step.step === 3 ? "Mark working vs failing" :
+            step.step === 4 ? "Use debug tools" :
+              step.step === 5 ? "Test different conditions" :
+                step.step === 6 ? "Verify external services" :
+                  step.step === 7 ? "Include error messages" :
+                    "Save for next time",
+
+      step.step === 1 ? "Note expected vs actual behavior" :
+        step.step === 2 ? "Choose closest app pattern" :
+          step.step === 3 ? "Stop at first failure" :
+            step.step === 4 ? "Check error messages" :
+              step.step === 5 ? "Document what helps/hurts" :
+                step.step === 6 ? "Check platform status" :
+                  step.step === 7 ? "Contact support with details" :
+                    "Update documentation"
+    ]
+  }))
+};
+
+// Quick Reference Cards Modal
+const QuickRefModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  if (!isOpen) return null;
+
+
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-7xl w-full max-h-[90vh] overflow-y-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 print:hidden">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <FileText className="w-5 h-5 text-blue-600" />
+            </div>
+            <h2 className="text-2xl font-semibold text-gray-900">Quick Reference Cards</h2>
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <X className="w-5 h-5 text-gray-500" />
+            </button>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6">
+          <div className="mb-6 print:hidden">
+            <p className="text-gray-600 text-lg">
+              Checklists for each debugging step. Keep these handy while troubleshooting.
+            </p>
+          </div>
+
+          {/* Reference Cards Grid */}
+          <div className="grid gap-6 md:grid-cols-2 print:grid-cols-2">
+            {quickRefData.steps.map((step, index) => (
+              <div key={index} className="border-2 border-gray-300 rounded-lg p-4 break-inside-avoid">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold">
+                    {step.step}
+                  </div>
+                  <h3 className="font-semibold text-gray-900 text-lg">{step.title}</h3>
+                </div>
+
+                <p className="text-gray-700 text-sm mb-4 leading-relaxed">
+                  {step.summary}
+                </p>
+
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2 text-sm">Quick Actions:</h4>
+                  <ul className="space-y-1">
+                    {step.quickActions.map((action, actionIndex) => (
+                      <li key={actionIndex} className="flex items-start gap-2 text-sm">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                        <span className="text-gray-700">{action}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-3 pt-3 border-t border-gray-200">
+                  <div className="flex items-center gap-2">
+                    <input type="checkbox" className="rounded" />
+                    <span className="text-sm text-gray-600">Step completed</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Print Instructions */}
+          <div className="mt-8 bg-blue-50 rounded-lg p-4 print:hidden">
+            <div className="flex items-start gap-3">
+              <FileText className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="font-medium text-blue-900 mb-1">Printing Tips</h4>
+                <p className="text-blue-800 text-sm">
+                  These cards are designed to print cleanly on standard paper. Consider printing on cardstock for durability, or laminating for repeated use.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 
 // Simple graphic components for framework steps
 const SimpleGraphics = {
@@ -1012,10 +1217,12 @@ export const EnhancedTroubleshootingTips = () => {
   );
 };
 
-export const EnhancedFrameworkSteps = ({ showAll = false }) => {
+export const EnhancedFrameworkSteps = ({ showAll = false, autoShowQuickChecks = false }) => {
   const stepsToShow = showAll ? frameworkSteps : frameworkSteps.slice(0, 4);
   const [expandedSteps, setExpandedSteps] = React.useState<Set<number>>(new Set());
   const [showErrorDecoder, setShowErrorDecoder] = React.useState(false);
+  const [completedSteps, setCompletedSteps] = React.useState<Set<number>>(new Set());
+  const [showQuickRef, setShowQuickRef] = React.useState(false);
 
   const toggleStep = (stepNumber: number) => {
     const newExpanded = new Set(expandedSteps);
@@ -1027,10 +1234,20 @@ export const EnhancedFrameworkSteps = ({ showAll = false }) => {
     setExpandedSteps(newExpanded);
   };
 
+  const toggleStepCompletion = (stepNumber: number) => {
+    const newCompleted = new Set(completedSteps);
+    if (newCompleted.has(stepNumber)) {
+      newCompleted.delete(stepNumber);
+    } else {
+      newCompleted.add(stepNumber);
+    }
+    setCompletedSteps(newCompleted);
+  };
+
   return (
-    <div className="bg-white mb-16 px-6 lg:px-12 xl:px-16">
+    <div className="bg-white mb-16 px-6 lg:px-12 xl:px-16 py-6 rounded-2xl">
       {/* Step 0 - Quick Checks */}
-      <Step0QuickChecks />
+      {/* <Step0QuickChecks autoShow={autoShowQuickChecks} /> */}
       {/* Header Section - Apple-style */}
       <div className="text-center mb-20 lg:mb-28">
         <h2 className="text-3xl lg:text-5xl font-light text-gray-900 mb-6 lg:mb-8 tracking-tight">
@@ -1050,17 +1267,25 @@ export const EnhancedFrameworkSteps = ({ showAll = false }) => {
             click here
           </a>.
         </p>
-        
-        {/* Error Message Decoder Button */}
-        <div className="mt-8">
+
+        {/* Progress & Quick Tools */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button
             onClick={() => setShowErrorDecoder(true)}
-            className="inline-flex items-center gap-3 bg-red-100 text-red-700 px-6 py-3 rounded-xl font-medium hover:bg-red-200 transition-colors shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200"
+            className="inline-flex items-center gap-3 bg-red-100 text-red-700 px-6 py-3 rounded-xl font-medium hover:bg-red-200 shadow-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 cursor-pointer"
           >
             <AlertCircle className="w-5 h-5" />
-            Error Message Decoder
-            <span className="text-red-600 text-sm">• Translate cryptic errors</span>
+            See what your error message means
+            {/* <span className="text-red-600 text-sm">• Translate cryptic errors</span> */}
           </button>
+
+          {/* <button
+            onClick={() => setShowQuickRef(true)}
+            className="inline-flex items-center gap-3 bg-blue-100 text-blue-700 px-6 py-3 rounded-xl font-medium hover:bg-blue-200 transition-colors shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200"
+          >
+            <FileText className="w-5 h-5" />
+            Quick Reference Guides
+          </button> */}
         </div>
       </div>
 
@@ -1068,18 +1293,37 @@ export const EnhancedFrameworkSteps = ({ showAll = false }) => {
       <div className="space-y-20 lg:space-y-24 max-w-6xl mx-auto">
         {stepsToShow.map((step, index) => {
           const isExpanded = expandedSteps.has(step.step);
+          const isCompleted = completedSteps.has(step.step);
           return (
             <div key={index} className="group">
               <div
                 className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                   }`}
               >
-                {/* Step Number - Minimalist Circle */}
-                <div className="flex-shrink-0">
-                  <div className="w-24 h-24 lg:w-28 lg:h-28 rounded-full border border-gray-200 flex items-center justify-center bg-gray-50">
-                    <span className="text-2xl lg:text-3xl font-light text-gray-800">
+                {/* Step Number - Minimalist Circle with Checkbox */}
+                <div className="flex-shrink-0 relative">
+                  <div className={`w-24 h-24 lg:w-28 lg:h-28 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${isCompleted
+                    ? 'border-green-400 bg-green-50'
+                    : 'border-gray-200 bg-gray-50'
+                    }`}>
+                    <span className={`text-2xl lg:text-3xl font-light transition-colors duration-300 ${isCompleted ? 'text-green-600' : 'text-gray-800'
+                      }`}>
                       {step.step}
                     </span>
+                  </div>
+
+                  {/* Completion Checkbox */}
+                  <div
+                    // onClick={() => toggleStepCompletion(step.step)}
+                    className={`absolute -bottom-2 -right-2 w-8 h-8 rounded-full border-2 border-white shadow-lg transition-all duration-300 flex items-center justify-center bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    title={isCompleted ? 'Mark as incomplete' : 'Mark as complete'}
+                  >
+                    {isCompleted ? (
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    ) : (
+                      <div className="w-3 h-3 bg-white rounded-full" />
+                    )}
                   </div>
                 </div>
 
@@ -1162,6 +1406,9 @@ export const EnhancedFrameworkSteps = ({ showAll = false }) => {
           </div>
         </div>
       )}
+
+      {/* Quick Reference Cards Modal */}
+      <QuickRefModal isOpen={showQuickRef} onClose={() => setShowQuickRef(false)} />
 
       {/* Error Message Decoder Modal */}
       <ErrorMessageModal isOpen={showErrorDecoder} onClose={() => setShowErrorDecoder(false)} />
