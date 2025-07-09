@@ -49,7 +49,7 @@ const PremiumDebugGuidePage: React.FC = () => {
               Our proven methodology for systematically identifying and resolving issues in AI-generated apps.
             </p>
           </div>
-          <EnhancedFrameworkSteps />
+          <EnhancedFrameworkSteps showAll={true} />
         </div>
 
         {/* Universal Troubleshooting Tips & Platform-Specific Issues */}
