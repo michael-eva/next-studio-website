@@ -62,8 +62,8 @@ const DebugGuidePage: React.FC = () => {
             href="/secretroute/debug-guide"
             className="inline-flex items-center gap-3 bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
           >
-            <Download className="w-5 h-5" />
-            Download Free Guide Now
+            <ArrowRight className="w-5 h-5" />
+            View Free Guide Now
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
@@ -141,8 +141,8 @@ const DebugGuidePage: React.FC = () => {
             href="/secretroute/debug-guide"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200"
           >
-            <Download className="w-5 h-5" />
-            Access Debug Guide
+            <ArrowRight className="w-5 h-5" />
+            View Debug Guide
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
