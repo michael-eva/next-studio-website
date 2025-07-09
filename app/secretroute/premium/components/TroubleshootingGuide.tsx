@@ -155,7 +155,7 @@ export default function TroubleshootingGuide() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
+        {/* <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
@@ -190,7 +190,7 @@ export default function TroubleshootingGuide() {
               </select>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Issues List */}
         <div className="space-y-4">
