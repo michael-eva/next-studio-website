@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Mail } from 'lucide-react';
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -62,8 +63,9 @@ export default function Navbar() {
                     </button>
                     <div className="hidden md:block">
                         <a href="/#contact"
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">
-                            Book a Free Consultation
+                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md flex items-center gap-2">
+                            <Mail className="w-4 h-4" />
+                            Get In Touch
                         </a>
                     </div>
                 </div>
