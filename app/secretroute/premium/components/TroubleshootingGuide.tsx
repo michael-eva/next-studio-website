@@ -91,26 +91,69 @@ export default function TroubleshootingGuide() {
   if (selectedPlatform) {
     return (
       <div className="space-y-8">
-        {/* Header */}
+        {/* Platform Header */}
         <div className="mb-8">
           <button
             onClick={() => setSelectedPlatform(null)}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4 transition-colors"
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to All Platforms
+            Back to Platform Selection
           </button>
-          <div className="flex items-center gap-4">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl"
-              style={{ backgroundColor: currentPlatform?.color }}
-            >
-              {currentPlatform?.logo}
+          <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-200">
+            <div className="flex items-center gap-4">
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg"
+                style={{ backgroundColor: currentPlatform?.color }}
+              >
+                {currentPlatform?.logo}
+              </div>
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold text-gray-900 mb-2">{currentPlatform?.name}</h3>
+                <p className="text-gray-600 mb-3">{currentPlatform?.description}</p>
+                <div className="flex items-center gap-4 text-sm">
+                  <span className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    {currentPlatform?.issueCount} common issues documented
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    Proven solutions for each issue
+                  </span>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-3xl font-bold text-gray-900">{currentPlatform?.name}</h3>
-              <p className="text-gray-600">{currentPlatform?.description}</p>
+          </div>
+        </div>
+
+        {/* Quick Stats */}
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <AlertCircle className="w-5 h-5 text-red-500" />
+              <span className="font-semibold text-red-700">Critical Issues</span>
             </div>
+            <p className="text-2xl font-bold text-red-600">
+              {filteredIssues.filter(issue => issue.severity === 'critical').length}
+            </p>
+          </div>
+          <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Clock className="w-5 h-5 text-orange-500" />
+              <span className="font-semibold text-orange-700">Moderate Issues</span>
+            </div>
+            <p className="text-2xl font-bold text-orange-600">
+              {filteredIssues.filter(issue => issue.severity === 'moderate').length}
+            </p>
+          </div>
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <CheckCircle className="w-5 h-5 text-green-500" />
+              <span className="font-semibold text-green-700">Minor Issues</span>
+            </div>
+            <p className="text-2xl font-bold text-green-600">
+              {filteredIssues.filter(issue => issue.severity === 'minor').length}
+            </p>
           </div>
         </div>
 
@@ -163,88 +206,196 @@ export default function TroubleshootingGuide() {
               <p className="text-gray-600">Try adjusting your search criteria or filters.</p>
             </div>
           ) : (
-            filteredIssues.map((issue) => (
-              <div key={issue.id} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                <div
-                  className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
-                  onClick={() => setExpandedIssue(expandedIssue === issue.id ? null : issue.id)}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div
-                          className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-white"
-                          style={{ backgroundColor: getSeverityColor(issue.severity) }}
-                        >
-                          {getSeverityIcon(issue.severity)}
-                          {issue.severity.toUpperCase()}
+            <>
+              {/* Priority Issues Section */}
+              {filteredIssues.filter(issue => issue.severity === 'critical').length > 0 && (
+                <div className="mb-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <AlertCircle className="w-6 h-6 text-red-500" />
+                    <h3 className="text-xl font-semibold text-gray-900">Critical Issues</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {filteredIssues
+                      .filter(issue => issue.severity === 'critical')
+                      .map((issue) => (
+                        <div key={issue.id} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                          <div
+                            className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
+                            onClick={() => setExpandedIssue(expandedIssue === issue.id ? null : issue.id)}
+                          >
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <div className="flex items-center gap-3 mb-3">
+                                  <div
+                                    className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-white"
+                                    style={{ backgroundColor: getSeverityColor(issue.severity) }}
+                                  >
+                                    {getSeverityIcon(issue.severity)}
+                                    {issue.severity.toUpperCase()}
+                                  </div>
+                                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                                    {troubleshootingData.categories.find((c: any) => c.id === issue.category)?.name}
+                                  </span>
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">{issue.title}</h3>
+                                <p className="text-gray-600 mb-4">{issue.description}</p>
+                                <div className="flex flex-wrap gap-2">
+                                  {issue.tags.map(tag => (
+                                    <span key={tag} className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-sm">
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="ml-4">
+                                {expandedIssue === issue.id ?
+                                  <ChevronUp className="w-5 h-5 text-gray-400" /> :
+                                  <ChevronDown className="w-5 h-5 text-gray-400" />
+                                }
+                              </div>
+                            </div>
+                          </div>
+
+                          {expandedIssue === issue.id && (
+                            <div className="border-t border-gray-200 p-6 bg-gray-50">
+                              <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                    <AlertCircle className="w-4 h-4 text-red-500" />
+                                    Symptoms
+                                  </h4>
+                                  <ul className="space-y-2">
+                                    {issue.symptoms.map((symptom, idx) => (
+                                      <li key={idx} className="flex items-start gap-2 text-gray-700">
+                                        <span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+                                        {symptom}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                    <CheckCircle className="w-4 h-4 text-green-500" />
+                                    Solutions
+                                  </h4>
+                                  <div className="space-y-4">
+                                    {issue.solutions.map((solution, idx) => (
+                                      <div key={idx} className="border-l-4 border-green-400 pl-4">
+                                        <h5 className="font-medium text-gray-900 mb-1">{solution.method}</h5>
+                                        <p className="text-gray-700 text-sm">{solution.description}</p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                              {issue.frameworkSteps && (
+                                <div className="mt-6 pt-4 border-t border-gray-300">
+                                  <p className="text-sm text-gray-600">
+                                    <strong>Framework Steps:</strong> Use steps {issue.frameworkSteps.join(', ')} from the troubleshooting framework
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
-                        <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-                          {troubleshootingData.categories.find((c: any) => c.id === issue.category)?.name}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{issue.title}</h3>
-                      <p className="text-gray-600 mb-4">{issue.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {issue.tags.map(tag => (
-                          <span key={tag} className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-sm">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      {expandedIssue === issue.id ?
-                        <ChevronUp className="w-5 h-5 text-gray-400" /> :
-                        <ChevronDown className="w-5 h-5 text-gray-400" />
-                      }
-                    </div>
+                      ))}
                   </div>
                 </div>
+              )}
 
-                {expandedIssue === issue.id && (
-                  <div className="border-t border-gray-200 p-6 bg-gray-50">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                          <AlertCircle className="w-4 h-4 text-red-500" />
-                          Symptoms
-                        </h4>
-                        <ul className="space-y-2">
-                          {issue.symptoms.map((symptom, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-gray-700">
-                              <span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
-                              {symptom}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                          Solutions
-                        </h4>
-                        <div className="space-y-4">
-                          {issue.solutions.map((solution, idx) => (
-                            <div key={idx} className="border-l-4 border-green-400 pl-4">
-                              <h5 className="font-medium text-gray-900 mb-1">{solution.method}</h5>
-                              <p className="text-gray-700 text-sm">{solution.description}</p>
+              {/* All Other Issues */}
+              {filteredIssues.filter(issue => issue.severity !== 'critical').length > 0 && (
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">All Other Issues</h3>
+                  <div className="space-y-4">
+                    {filteredIssues
+                      .filter(issue => issue.severity !== 'critical')
+                      .map((issue) => (
+                        <div key={issue.id} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                          <div
+                            className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
+                            onClick={() => setExpandedIssue(expandedIssue === issue.id ? null : issue.id)}
+                          >
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <div className="flex items-center gap-3 mb-3">
+                                  <div
+                                    className="flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium text-white"
+                                    style={{ backgroundColor: getSeverityColor(issue.severity) }}
+                                  >
+                                    {getSeverityIcon(issue.severity)}
+                                    {issue.severity.toUpperCase()}
+                                  </div>
+                                  <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                                    {troubleshootingData.categories.find((c: any) => c.id === issue.category)?.name}
+                                  </span>
+                                </div>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">{issue.title}</h3>
+                                <p className="text-gray-600 mb-4">{issue.description}</p>
+                                <div className="flex flex-wrap gap-2">
+                                  {issue.tags.map(tag => (
+                                    <span key={tag} className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-sm">
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="ml-4">
+                                {expandedIssue === issue.id ?
+                                  <ChevronUp className="w-5 h-5 text-gray-400" /> :
+                                  <ChevronDown className="w-5 h-5 text-gray-400" />
+                                }
+                              </div>
                             </div>
-                          ))}
+                          </div>
+
+                          {expandedIssue === issue.id && (
+                            <div className="border-t border-gray-200 p-6 bg-gray-50">
+                              <div className="grid md:grid-cols-2 gap-6">
+                                <div>
+                                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                    <AlertCircle className="w-4 h-4 text-red-500" />
+                                    Symptoms
+                                  </h4>
+                                  <ul className="space-y-2">
+                                    {issue.symptoms.map((symptom, idx) => (
+                                      <li key={idx} className="flex items-start gap-2 text-gray-700">
+                                        <span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0"></span>
+                                        {symptom}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                                    <CheckCircle className="w-4 h-4 text-green-500" />
+                                    Solutions
+                                  </h4>
+                                  <div className="space-y-4">
+                                    {issue.solutions.map((solution, idx) => (
+                                      <div key={idx} className="border-l-4 border-green-400 pl-4">
+                                        <h5 className="font-medium text-gray-900 mb-1">{solution.method}</h5>
+                                        <p className="text-gray-700 text-sm">{solution.description}</p>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                              {issue.frameworkSteps && (
+                                <div className="mt-6 pt-4 border-t border-gray-300">
+                                  <p className="text-sm text-gray-600">
+                                    <strong>Framework Steps:</strong> Use steps {issue.frameworkSteps.join(', ')} from the troubleshooting framework
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    </div>
-                    {issue.frameworkSteps && (
-                      <div className="mt-6 pt-4 border-t border-gray-300">
-                        <p className="text-sm text-gray-600">
-                          <strong>Framework Steps:</strong> Use steps {issue.frameworkSteps.join(', ')} from the troubleshooting framework
-                        </p>
-                      </div>
-                    )}
+                      ))}
                   </div>
-                )}
-              </div>
-            ))
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -254,80 +405,54 @@ export default function TroubleshootingGuide() {
   // Default view showing universal tips and platform cards
   return (
     <div className="space-y-8">
-      {/* Universal Troubleshooting Tips Section */}
-      <EnhancedTroubleshootingTips />
-
-      {/* Search and Filter Section */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-12">
-        <div className="relative mb-6">
-          <Search className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search across all platforms for issues, symptoms, or solutions..."
-            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="flex flex-wrap gap-4 items-center">
-          <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-gray-500" />
-            <span className="text-sm font-medium text-gray-700">Quick Filters:</span>
-          </div>
-          <select
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="all">All Categories</option>
-            {troubleshootingData.categories.map((cat: any) => (
-              <option key={cat.id} value={cat.id}>{cat.name}</option>
-            ))}
-          </select>
-          <select
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm"
-            value={selectedSeverity}
-            onChange={(e) => setSelectedSeverity(e.target.value)}
-          >
-            <option value="all">All Severities</option>
-            {troubleshootingData.severities.map((sev: any) => (
-              <option key={sev.id} value={sev.id}>{sev.name}</option>
-            ))}
-          </select>
-        </div>
+      {/* Platform Selection Cards */}
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">
+          Choose Your Platform to Get Started
+        </h3>
+        <p className="text-gray-600 text-center mb-6 max-w-2xl mx-auto">
+          Select your no-code platform below to access curated troubleshooting guides with the most common issues and proven solutions.
+        </p>
       </div>
 
-      {/* Platform Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {troubleshootingData.platforms.map((platform: Platform) => (
           <div
             key={platform.id}
             onClick={() => setSelectedPlatform(platform.id)}
-            className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 cursor-pointer hover:shadow-md hover:-translate-y-1 transition-all duration-200 group"
+            className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 cursor-pointer hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden"
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform"
-                style={{ backgroundColor: platform.color }}
-              >
-                {platform.logo}
+            {/* Hover effect overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300"
+                  style={{ backgroundColor: platform.color }}
+                >
+                  {platform.logo}
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-800">{platform.name}</h3>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900">{platform.name}</h3>
+              <p className="text-gray-600 text-sm mb-4 leading-relaxed">{platform.description}</p>
+              <div className="flex flex-col items-center justify-between gap-2">
+                <span
+                  className="px-3 py-1 rounded-full text-sm font-medium"
+                  style={{
+                    backgroundColor: `${platform.color}20`,
+                    color: platform.color
+                  }}
+                >
+                  {platform.issueCount} common issues
+                </span>
+                <div className="flex items-center gap-1 text-gray-400 group-hover:text-gray-600 transition-colors">
+                  <span className="text-sm font-medium">View Issues</span>
+                  <ExternalLink className="w-4 h-4" />
+                </div>
               </div>
-            </div>
-            <p className="text-gray-600 text-sm mb-4 leading-relaxed">{platform.description}</p>
-            <div className="flex items-center justify-between">
-              <span
-                className="px-3 py-1 rounded-full text-sm font-medium"
-                style={{
-                  backgroundColor: `${platform.color}20`,
-                  color: platform.color
-                }}
-              >
-                {platform.issueCount} issues
-              </span>
-              <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-gray-600" />
             </div>
           </div>
         ))}
