@@ -2,6 +2,7 @@ export const FullFrameworkSteps = () => {
   return <EnhancedFrameworkSteps showAll={true} />;
 }; import { ReactNode } from 'react';
 import React from 'react';
+import Link from 'next/link';
 import { Search, BookOpen, Layers, CheckCircle, RefreshCcw, Settings, AlertCircle, Terminal, Users, Info, MessageSquare, Database, TestTube, RotateCcw, FileText, Wrench, Target, ListChecks, HelpCircle, Sliders, MapPin, Microscope, Bug, ExternalLink, FlaskConical, Lightbulb, FileSearch, BookOpenCheck, X, Chrome, Globe } from 'lucide-react';
 
 // Step 0 - Quick Sanity Checks Data
@@ -54,62 +55,62 @@ export const cacheHelpData = {
 
 export const genericTips = [
   {
-    title: "Verify Inputs & Prompts",
-    description: "Ensure prompts are clear, specific, and detailed. Vague inputs lead to unexpected outputs. If AI misinterprets requests, rephrase with more context or break into smaller parts.",
+    title: "Make Your Instructions Crystal Clear",
+    description: "AI works best with specific, detailed instructions. Instead of 'make a login page,' try 'create a login page with email and password fields, a submit button, and a forgot password link.' If the AI misunderstands, break your request into smaller, more specific steps.",
     graphic: "prompt",
     color: "from-blue-400 to-blue-600"
   },
   {
-    title: "Consult Documentation",
-    description: "Check official documentation, help guides, and community forums for platform-specific solutions and known issues.",
+    title: "Find Help in the Right Places",
+    description: "Every platform has a help center, community forum, and knowledge base. Start with the official docs, then check Reddit communities like r/nocode or r/[platform name]. Search for your specific error message plus your platform name (e.g., 'workflow not triggering Bubble').",
     graphic: "documentation",
     color: "from-green-400 to-green-600"
   },
   {
-    title: "Validate Data Connections",
-    description: "Verify API keys, endpoints, database connections, and integration configurations. Check for authentication errors or incorrect data formats.",
+    title: "Check If Your Integrations Are Working",
+    description: "If your app connects to external services (email, payment, AI), verify these connections are active. Look for expired API keys (connection passwords), broken webhooks, or authentication errors. Test with simple data first before complex workflows.",
     graphic: "database",
     color: "from-purple-400 to-purple-600"
   },
   {
-    title: "Test Components Incrementally",
-    description: "Build and test small parts before scaling. Isolate issues by testing individual components (buttons, forms, workflows) to pinpoint failure points.",
+    title: "Test One Thing at a Time",
+    description: "Don't try to debug everything at once. Test individual parts of your app separately - first the button, then the form, then the database connection. This way, when something breaks, you'll know exactly which piece is causing the problem.",
     graphic: "testing",
     color: "from-orange-400 to-orange-600"
   },
   {
-    title: "Clear Cache & Reset Sessions",
-    description: "Clear browser cache, log out/in, or reset the workspace. Cached data or corrupted sessions often cause unexpected behavior.",
+    title: "Clear Cache & Reset Sessions (The Magic Fix)",
+    description: "This solves about 30% of mysterious issues. Clear your browser cache, log out and back in, or try incognito mode. Old cached data often conflicts with new changes, causing weird behavior that makes no sense.",
     graphic: "refresh",
     color: "from-cyan-400 to-cyan-600"
   },
   {
-    title: "Update Software & Tools",
-    description: "Ensure browser, plugins, and the app builder are current. Outdated tools frequently cause compatibility issues.",
+    title: "Keep Your Tools Updated",
+    description: "Use the latest version of your browser, keep your app builder platform updated, and check for any plugin updates. Old versions often have bugs that newer versions have fixed. This prevents many compatibility headaches.",
     graphic: "update",
     color: "from-indigo-400 to-indigo-600"
   },
   {
-    title: "Analyze Error Messages",
-    description: "Review error logs and debug information carefully. They typically indicate specific issues like missing fields, syntax errors, or permission problems.",
+    title: "Decode Error Messages (They're Not as Scary as They Look)",
+    description: "Error messages are like clues in a mystery. Copy the exact error text and search for it online with your platform name. Look for patterns like '404' (something not found), '500' (server problem), or 'field required' (missing information).",
     graphic: "error",
     color: "from-red-400 to-red-600"
   },
   {
-    title: "Simplify & Isolate Issues",
-    description: "Remove complex features temporarily to test core functionality. Add components back one at a time to identify problematic elements.",
+    title: "When in Doubt, Simplify Everything",
+    description: "Remove complex features temporarily and test just the basics. If a complex workflow isn't working, create a simple version first. Once the simple version works, add complexity back one piece at a time until you find what breaks it.",
     graphic: "simplify",
     color: "from-yellow-400 to-yellow-600"
   },
   {
-    title: "Leverage Community Resources",
-    description: "Search platform forums, Reddit, or Stack Overflow for similar issues. Contact support with detailed information including screenshots and error codes.",
+    title: "Ask for Help (You're Not Alone)",
+    description: "The no-code community is incredibly helpful. Post in platform forums, Reddit communities, or Discord servers with specific details: what you're trying to do, what's happening instead, and what you've already tried. Include screenshots of error messages.",
     graphic: "community",
     color: "from-pink-400 to-pink-600"
   },
   {
-    title: "Adjust Platform Settings",
-    description: "Experiment with model versions, output formats, and performance settings. Different configurations may resolve compatibility or functionality issues.",
+    title: "Try Different Platform Settings",
+    description: "Most issues can be solved by tweaking settings. Common fixes: switch AI model versions (GPT-3.5 vs GPT-4), change output formats, adjust rate limits, or modify user permissions. When in doubt, try the 'default' or 'recommended' settings first.",
     graphic: "settings",
     color: "from-teal-400 to-teal-600"
   }
@@ -211,6 +212,232 @@ const CacheHelpModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
         </div>
       </div>
 
+    </div>
+  );
+};
+
+// Premium Teaser Component
+export const PremiumTeaser = () => {
+  return (
+    <div className="bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 rounded-2xl shadow-lg border border-yellow-200 p-8 mb-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
+            <span>⭐</span>
+            <span>Premium Debug Guide</span>
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Complete No-Code AI App Troubleshooting System
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Access the full framework and platform-specific troubleshooting guides to debug any no-code AI app systematically and efficiently.
+          </p>
+        </div>
+
+        {/* What's Included */}
+        <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 mb-8">
+          <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">What You Get with Premium Access</h3>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {/* Left Column - Framework */}
+            <div className="space-y-6">
+              <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <Target className="w-5 h-5 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-blue-900">Complete 8-Step Framework</h4>
+                </div>
+                <ul className="space-y-2 text-blue-800">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">All 8 debugging steps (vs 4 in free version)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Interactive quick sanity checks</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Comprehensive dependency checklists</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Print-friendly reference cards</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                    <Wrench className="w-5 h-5 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-green-900">Universal Troubleshooting Guide</h4>
+                </div>
+                <ul className="space-y-2 text-green-800">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">10 essential debugging techniques</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Visual guides with animated graphics</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Works across all no-code platforms</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Right Column - Platform Specific */}
+            <div className="space-y-6">
+              <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <Settings className="w-5 h-5 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-purple-900">Platform-Specific Troubleshooting</h4>
+                </div>
+                <ul className="space-y-2 text-purple-800">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Detailed guides for 8 major platforms</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">50+ documented common issues</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Step-by-step solutions for each issue</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Searchable by symptoms and platform</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-orange-50 rounded-lg p-6 border border-orange-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
+                    <AlertCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-orange-900">Error Message Decoder</h4>
+                </div>
+                <ul className="space-y-2 text-orange-800">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Translate cryptic error messages</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Actionable solutions for each error</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Covers all common error patterns</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Platform Icons */}
+        <div className="bg-white rounded-xl p-6 mb-8 border border-gray-200">
+          <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">Platforms Covered</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/bolt.svg" alt="StackBlitz" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">StackBlitz</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/lovable.svg" alt="Lovable" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">Lovable</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/replit.svg" alt="Replit" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">Replit</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/bubble.svg" alt="Bubble" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">Bubble</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/adalo.svg" alt="Adalo" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">Adalo</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/FlutterFlow.jpeg" alt="FlutterFlow" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">FlutterFlow</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img src="/stack/glide.svg" alt="Glide" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-sm text-gray-600">Glide</span>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 bg-gray-500 rounded-lg flex items-center justify-center text-white">
+                <Search className="w-6 h-6" />
+              </div>
+              <span className="text-sm text-gray-600">& More</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="bg-white rounded-xl p-6 mb-8 border border-gray-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-yellow-600 mb-1">8</div>
+              <div className="text-sm text-gray-600">Framework Steps</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-purple-600 mb-1">8</div>
+              <div className="text-sm text-gray-600">Platforms Covered</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600 mb-1">50+</div>
+              <div className="text-sm text-gray-600">Common Issues</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-green-600 mb-1">10</div>
+              <div className="text-sm text-gray-600">Universal Tips</div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <Link
+            href="/secretroute/premium"
+            className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Access Premium Guide
+          </Link>
+          <p className="text-gray-500 text-sm mt-3">
+            One-time purchase • Lifetime access • Regular updates
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

@@ -102,11 +102,8 @@ export default function TroubleshootingGuide() {
           </button>
           <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-200">
             <div className="flex items-center gap-4">
-              <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg"
-                style={{ backgroundColor: currentPlatform?.color }}
-              >
-                {currentPlatform?.logo}
+              <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg">
+                <img src={currentPlatform?.logo} alt={currentPlatform?.name} className="w-full h-full object-cover" />
               </div>
               <div className="flex-1">
                 <h3 className="text-3xl font-bold text-gray-900 mb-2">{currentPlatform?.name}</h3>
@@ -427,11 +424,8 @@ export default function TroubleshootingGuide() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-4">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: platform.color }}
-                >
-                  {platform.logo}
+                <div className="w-12 h-12 rounded-xl overflow-hidden shadow-lg">
+                  <img src={platform.logo} alt={platform.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-800">{platform.name}</h3>
@@ -470,11 +464,8 @@ export default function TroubleshootingGuide() {
               return (
                 <div key={issue.id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                   <div className="flex items-start gap-4">
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold"
-                      style={{ backgroundColor: platform?.color }}
-                    >
-                      {platform?.logo}
+                    <div className="w-10 h-10 rounded-lg overflow-hidden shadow-lg">
+                      <img src={platform?.logo} alt={platform?.name} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">

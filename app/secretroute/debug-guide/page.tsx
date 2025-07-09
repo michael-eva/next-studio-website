@@ -1,4 +1,4 @@
-import { EnhancedTroubleshootingTips } from '@/app/components/TroubleshootingGuideData';
+import { EnhancedTroubleshootingTips, PremiumTeaser } from '@/app/components/TroubleshootingGuideData';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
@@ -15,6 +15,7 @@ export default function DebugGuide() {
         </Link>
       </div>
       <EnhancedTroubleshootingTips />
+      <PremiumTeaser />
     </div>
   );
 }
