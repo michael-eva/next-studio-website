@@ -56,7 +56,7 @@ const DebugGuidePage: React.FC = () => {
             Free Universal Troubleshooting Tips for Any AI App Builder
           </h2>
           <p className="text-blue-100 mb-6 text-lg leading-relaxed">
-            Not sure where to start? Our free guide covers universal troubleshooting tips that work across <em>any</em> AI app builder. From diagnosing common glitches to optimizing your build process, these tips give you a solid foundation to tackle issues fast.
+            Not sure where to start? Our free guide covers universal troubleshooting tips that work across <em>any</em> AI app builder. From diagnosing common glitches to optimising your build process, these tips give you a solid foundation to tackle issues fast.
           </p>
           <Link
             href="/secretroute/debug-guide"

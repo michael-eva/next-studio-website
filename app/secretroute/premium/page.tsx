@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Star, Download, Search } from 'lucide-react';
+import { ArrowLeft, Star, Download, Search, ArrowRight } from 'lucide-react';
 import { EnhancedFrameworkSteps, EnhancedTroubleshootingTips, Step0QuickChecks } from '../../components/TroubleshootingGuideData';
 import TroubleshootingGuide from './components/TroubleshootingGuide';
 
@@ -121,37 +121,20 @@ const PremiumDebugGuidePage: React.FC = () => {
           <EnhancedTroubleshootingTips />
         </div>
 
-
-
-        {/* Additional Resources Section */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-            What You Get with Premium Access
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                <span className="text-gray-700">Regular updates with new platform issues</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Download Section */}
         <div className="text-center bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-lg p-8 text-white">
           <h2 className="text-2xl font-semibold mb-4">
             Ready to Debug Like a Pro?
           </h2>
           <p className="text-blue-100 mb-6 text-lg">
-            Bookmark this page for quick access to your premium troubleshooting resources.
+            Interact with Extensa GPT to get your questions answered.
           </p>
           <button
-            onClick={() => window.print()}
+            onClick={() => alert('Coming soon!')}
             className="inline-flex items-center gap-3 bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
           >
-            <Download className="w-5 h-5" />
-            Print/Save Guide
+            <ArrowRight className="w-5 h-5" />
+            Take me to Extensa GPT
           </button>
         </div>
       </div>

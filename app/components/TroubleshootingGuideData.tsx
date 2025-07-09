@@ -23,7 +23,7 @@ export const quickChecks = [
 export const cacheHelpData = {
   explanation: {
     cache: "Cache stores temporary files (images, scripts, styles) to make websites load faster. Sometimes old cached files cause issues when websites update.",
-    cookies: "Cookies store login info, preferences, and session data. Corrupted cookies can cause login issues or unexpected behavior."
+    cookies: "Cookies store login info, preferences, and session data. Corrupted cookies can cause login issues or unexpected behaviour."
   },
   browsers: [
     {
@@ -80,7 +80,7 @@ export const genericTips = [
   },
   {
     title: "Clear Cache & Reset Sessions (The Magic Fix)",
-    description: "This solves about 30% of mysterious issues. Clear your browser cache, log out and back in, or try incognito mode. Old cached data often conflicts with new changes, causing weird behavior that makes no sense.",
+    description: "This solves about 30% of mysterious issues. Clear your browser cache, log out and back in, or try incognito mode. Old cached data often conflicts with new changes, causing weird behaviour that makes no sense.",
     graphic: "refresh",
     color: "from-cyan-400 to-cyan-600"
   },
@@ -829,7 +829,7 @@ export const frameworkSteps = [
   {
     step: 1,
     title: "Define the Problem Clearly",
-    description: "Note down exactly what's not working. Be specific about the behavior you expect versus what's happening.",
+    description: "Note down exactly what's not working. Be specific about the behaviour you expect versus what's happening.",
     details: "Example: 'The form submission button should save user data to the database, but nothing happens when clicked.'",
     action: (
       <>
@@ -852,7 +852,7 @@ export const frameworkSteps = [
   {
     step: 2,
     title: "Map the App's Components",
-    description: "Break your app into logical components or layers. Most AI app builders organize apps into different architectural layers.",
+    description: "Break your app into logical components or layers. Most AI app builders organise apps into different architectural layers.",
     details: (
       <>
         <div>Think of your app like a simple flow of connected boxes. Each box represents a part that could break:</div>
@@ -1157,7 +1157,7 @@ export const quickRefData = {
                   step.step === 7 ? "Include error messages" :
                     "Save for next time",
 
-      step.step === 1 ? "Note expected vs actual behavior" :
+      step.step === 1 ? "Note expected vs actual behaviour" :
         step.step === 2 ? "Choose closest app pattern" :
           step.step === 3 ? "Stop at first failure" :
             step.step === 4 ? "Check error messages" :
