@@ -187,7 +187,7 @@ export default function BookEmergencyRescue() {
                 <CreditCard className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">1. Secure Payment</h3>
-              <p className="text-sm text-gray-600">Pay securely via Stripe. Your assessment begins immediately after payment.</p>
+              <p className="text-sm text-gray-600">Pay securely with Stripe. Your assessment begins immediately after payment confirmation.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -256,11 +256,11 @@ export default function BookEmergencyRescue() {
             <div className="flex items-center justify-center gap-6 text-sm text-gray-300">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4" />
-                <span>Secure Payment</span>
+                <span>Powered by Stripe</span>
               </div>
               <div className="flex items-center gap-2">
                 <Lock className="w-4 h-4" />
-                <span>256-bit SSL</span>
+                <span>Instant Confirmation</span>
               </div>
               <div className="flex items-center gap-2">
                 <FileText className="w-4 h-4" />
@@ -285,10 +285,10 @@ export default function BookEmergencyRescue() {
               {/* This is where you'd integrate Stripe or your payment processor */}
               <div className="space-y-4">
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-sm text-blue-800">
-                    <strong>Payment Integration:</strong> Connect your Stripe, PayPal, or preferred payment processor here.
-                    The payment should process the ${currentPrice.toLocaleString()} AUD amount and trigger an email with next steps.
-                  </p>
+                <p className="text-sm text-blue-800">
+                <strong>Stripe Integration:</strong> Connect your Stripe account here to process the ${currentPrice.toLocaleString()} AUD payment. 
+                Stripe handles all security and triggers automated email confirmations with next steps.
+                </p>
                 </div>
 
                 <div className="flex gap-3">
