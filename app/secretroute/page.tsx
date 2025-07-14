@@ -198,7 +198,7 @@ const DebugGuidePage: React.FC = () => {
         </div>
 
         {/* Still Broken? Professional Help Section */}
-        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-lg p-8 mb-12 text-white">
+        {/* <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl shadow-lg p-8 mb-12 text-white">
           <h2 className="text-3xl font-semibold mb-4">
             Still Broken After Trying Everything?
           </h2>
@@ -238,10 +238,10 @@ const DebugGuidePage: React.FC = () => {
             Learn About Professional Rescue
             <ArrowRight className="w-5 h-5" />
           </Link>
-        </div>
+        </div> */}
 
         {/* Final CTA Section */}
-        <div className="text-center bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+        {/* <div className="text-center bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
           <h2 className="text-2xl font-semibold text-gray-900 mb-4">
             Stop Hoping. Start Fixing.
           </h2>
@@ -256,7 +256,7 @@ const DebugGuidePage: React.FC = () => {
             Get the Free Crisis Management System
             <ArrowRight className="w-5 h-5" />
           </Link>
-        </div>
+        </div> */}
       </div>
 
       {/* Modal for What's Included Details */}
