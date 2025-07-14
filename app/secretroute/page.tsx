@@ -12,10 +12,10 @@ const DebugGuidePage: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 py-16">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
             AI Promised You an App in Days. 3 Months Later, It's Still Broken. Now What?
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+          <p className="md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
             You've tried everything. Regenerating the code 47 times. Pleading with ChatGPT like it's a customer service rep. Even Googling 'how to make AI app actually work' at 2am. Your launch is approaching, your budget is blown, and your app is still a beautiful disaster. Here's the proven framework that turns AI app disasters into demo-ready successes – no robot begging required.
           </p>
         </div>
