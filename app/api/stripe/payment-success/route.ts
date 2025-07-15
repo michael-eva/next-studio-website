@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCheckoutSession } from "@/app/services/stripe";
 import { accessCodeService } from "@/app/lib/access-code-service";
-import { sendEmailWithAccessCode } from "@/app/services/resend";
+import { sendEmail, sendEmailWithAccessCode } from "@/app/services/resend";
 
 export async function POST(req: NextRequest) {
   try {
@@ -63,9 +63,43 @@ export async function POST(req: NextRequest) {
       const urgency = session.metadata?.urgency || "standard";
       const delivery = session.metadata?.delivery || "3-5 business days";
 
-      // For emergency assessment, we don't create access codes
-      // Instead, we'll send a confirmation email and return booking details
-      // TODO: Implement emergency assessment email service
+      await sendEmail({
+        bcc: ["michael@extensa.studio"],
+        to: session.customer_details?.email || "unknown@example.com",
+        subject: "Emergency Assessment Checkout",
+        text: "Thank you for booking your emergency assessment with Extensa Studio! Your assessment has been successfully scheduled. Our team will contact you shortly to arrange your strategy call and discuss your project requirements in detail. We'll reach out soon to schedule your strategy call. If you have any immediate questions, feel free to reply to this email or contact us directly. Best regards, The Extensa Studio Team",
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <h2 style="color: #333; margin-bottom: 20px;">Emergency Assessment Confirmation</h2>
+            
+            <p style="color: #555; line-height: 1.6; margin-bottom: 16px;">
+              Thank you for booking your emergency assessment with Extensa Studio!
+            </p>
+            
+            <p style="color: #555; line-height: 1.6; margin-bottom: 16px;">
+              Your assessment has been successfully scheduled. Our team will contact you shortly to arrange your strategy call and discuss your project requirements in detail.
+            </p>
+            
+            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #333; margin-top: 0; margin-bottom: 12px;">What's Next?</h3>
+              <ul style="color: #555; line-height: 1.6; margin: 0; padding-left: 20px;">
+                <li>We'll reach out within 24 hours to schedule your strategy call</li>
+                <li>Prepare any relevant project details or questions you'd like to discuss</li>
+                <li>Our team will review your requirements and provide tailored recommendations</li>
+              </ul>
+            </div>
+            
+            <p style="color: #555; line-height: 1.6; margin-bottom: 16px;">
+              If you have any immediate questions, feel free to reply to this email or contact us directly.
+            </p>
+            
+            <p style="color: #555; line-height: 1.6; margin-bottom: 0;">
+              Best regards,<br>
+              <strong>The Extensa Studio Team</strong>
+            </p>
+          </div>
+        `,
+      });
 
       return NextResponse.json({
         productType: "emergency_assessment",

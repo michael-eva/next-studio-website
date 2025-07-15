@@ -209,7 +209,6 @@ function PaymentSuccessContent() {
           /* Emergency Assessment Booking Card */
           <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-8">
             <div className="text-center mb-6">
-              <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">
                 Emergency Assessment Booked
               </h2>

@@ -7,15 +7,17 @@ interface EmailData {
   subject: string;
   text: string;
   html?: string;
+  bcc?: string[];
 }
 
-export async function sendEmail({ to, subject, text, html }: EmailData) {
+export async function sendEmail({ to, subject, text, html, bcc }: EmailData) {
   try {
     const { data, error } = await resend.emails.send({
       from: "Extensa Studio <michael@notifications.extensa.studio>",
       to: [to],
       subject,
       text,
+      bcc,
       html: html || text.replace(/\n/g, "<br>"),
     });
 
@@ -49,5 +51,11 @@ export async function sendEmailWithAccessCode(
     If you did not request this code, you can safely ignore this email.</p>
     <p style="margin-top: 32px;">Best regards,<br>The Extensa Studio Team</p>
   `;
-  await sendEmail({ to: email, subject: "Your access code", text, html });
+  await sendEmail({
+    bcc: ["michael@extensa.studio"],
+    to: email,
+    subject: "Your access code",
+    text,
+    html,
+  });
 }
