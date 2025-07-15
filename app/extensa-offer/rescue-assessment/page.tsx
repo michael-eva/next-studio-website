@@ -1,80 +1,39 @@
-'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Clock, DollarSign, Users, Star, Zap, Target, Brain, X } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { ArrowLeft, AlertTriangle, CheckCircle, Shield, FileText, Clock, Zap, Target, Brain, X } from 'lucide-react';
+import FAQSection from './components/FAQSection';
+import type { Metadata } from 'next';
+import ClientSideActions from './components/ClientSideActions';
+
+export const metadata: Metadata = {
+  title: 'Emergency Project Rescue Assessment - $2,000 AUD | Professional AI App Recovery | Extensa',
+  description: 'Professional codebase analysis and strategic recovery plan for failing AI projects. Emergency Project Rescue Assessment includes forensic analysis, stakeholder-ready report, and recovery roadmap.',
+  keywords: 'AI app rescue assessment, AI project recovery, professional AI app analysis, emergency AI app help, AI app audit, failing AI project consultation',
+  openGraph: {
+    title: 'Emergency Project Rescue Assessment - Professional AI App Recovery',
+    description: 'Professional codebase analysis and strategic recovery plan for failing AI projects. Get expert intervention when self-help isn\'t enough.',
+    url: 'https://extensa.dev/extensa-offer/rescue-assessment',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
+};
 
 export default function EmergencyRescueAssessment() {
-  const router = useRouter();
-  const [showFAQ, setShowFAQ] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const toggleFAQ = (index: number) => {
-    setShowFAQ(showFAQ === index ? null : index);
-  };
-
-  const faqs = [
-    {
-      question: "How is this different from your free crisis management system?",
-      answer: "The free system helps you fix issues yourself. This is professional codebase analysis for projects that are structurally broken. I personally review your code, identify what's salvageable, and create a strategic recovery plan."
-    },
-    {
-      question: "What if my code is proprietary or confidential?",
-      answer: "I sign NDAs and have strict confidentiality protocols. Your code and business information remain completely private. I can also work with sanitized versions of your codebase if needed."
-    },
-    {
-      question: "How long does the assessment take?",
-      answer: "Most assessments are completed within 3-5 business days. Rush assessments (24-48 hours) are available for critical situations at an additional fee."
-    },
-    {
-      question: "What if you determine the project can't be saved?",
-      answer: "I'll give you an honest assessment. If the project truly can't be salvaged, I'll explain why and provide recommendations for starting fresh with minimal loss."
-    },
-    {
-      question: "Do you actually fix the issues or just tell me what's wrong?",
-      answer: "This assessment provides diagnosis and strategic recommendations. Implementation services are available separately if you need hands-on fixing."
-    },
-    {
-      question: "What platforms and technologies do you cover?",
-      answer: "I specialize in AI-generated apps across all major platforms: Bolt.new, Lovable, Replit, Bubble, FlutterFlow, Adalo, Glide, and more. If you're unsure, just ask."
-    }
-  ];
-
-  const handleBuyAIAgent = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/stripe/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          cancelUrl: window.location.href // Pass current page URL as cancel URL
-        }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert('Failed to start checkout. Please try again.');
-      }
-    } catch (err) {
-      alert('Error connecting to payment gateway.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <button
-            onClick={() => router.back()}
+          <Link
+            href="/extensa-offer"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </button>
+          </Link>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
@@ -304,13 +263,7 @@ export default function EmergencyRescueAssessment() {
                   <span>30-day access</span>
                 </div>
               </div>
-              <button
-                onClick={handleBuyAIAgent}
-                className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors disabled:opacity-60"
-                disabled={loading}
-              >
-                {loading ? 'Redirecting...' : 'Get AI Recovery Agent'}
-              </button>
+              <ClientSideActions />
               <p className="text-xs text-gray-400 mt-2 text-center">
                 Perfect when you need intelligent guidance but can implement fixes yourself
               </p>
@@ -457,14 +410,13 @@ export default function EmergencyRescueAssessment() {
             Every day you wait, your project gets harder to save and stakeholder confidence drops further. Choose your intervention level and get help now.
           </p>
           <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-            <button
-              onClick={handleBuyAIAgent}
-              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors disabled:opacity-60"
-              disabled={loading}
+            <Link
+              href="/extensa-offer/ai-agent"
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
             >
               <Brain className="w-5 h-5" />
-              {loading ? 'Redirecting...' : 'Get AI Agent - $197'}
-            </button>
+              Get AI Agent - $197
+            </Link>
             <Link
               href="/extensa-offer/book-rescue"
               className="inline-flex items-center justify-center gap-2 bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors border-2 border-white"
@@ -479,29 +431,7 @@ export default function EmergencyRescueAssessment() {
         </div>
 
         {/* FAQ Section */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg">
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-50 transition-colors"
-                >
-                  <span className="font-medium text-gray-900">{faq.question}</span>
-                  <ArrowRight className={`w-5 h-5 text-gray-500 transition-transform ${showFAQ === index ? 'rotate-90' : ''}`} />
-                </button>
-                {showFAQ === index && (
-                  <div className="px-4 pb-4">
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        <FAQSection />
       </div>
     </div>
   );

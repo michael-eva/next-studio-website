@@ -1,3 +1,4 @@
+'use client'
 export const FullFrameworkSteps = () => {
   return <EnhancedFrameworkSteps showAll={true} />;
 }; import { ReactNode } from 'react';

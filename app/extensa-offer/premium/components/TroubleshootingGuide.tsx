@@ -1,3 +1,4 @@
+'use client'
 import { useState, useMemo } from 'react';
 import { issues, troubleshootingData } from '../data';
 import { Search, Filter, ExternalLink, AlertCircle, CheckCircle, Clock, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';

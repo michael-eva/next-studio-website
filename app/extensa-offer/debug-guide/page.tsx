@@ -1,25 +1,39 @@
-'use client'
-import React, { useState } from 'react';
+import React from 'react';
 import { EnhancedTroubleshootingTips, EnhancedFrameworkSteps, Step0QuickChecks } from '@/app/components/TroubleshootingGuideData';
 import TroubleshootingGuide from '../premium/components/TroubleshootingGuide';
 import Link from 'next/link';
 import { ArrowLeft, AlertTriangle, CheckCircle, ArrowRight, Users, Star } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Complete AI App Crisis Management System - Free Emergency Protocols | Extensa',
+  description: 'Complete emergency protocol system to rescue failing AI projects. 8-step diagnostic framework, platform-specific solutions, and recovery protocols. Free crisis management guide.',
+  keywords: 'AI app emergency protocol, AI app crisis management, AI app debugging guide, AI app recovery system, failing AI project help',
+  openGraph: {
+    title: 'Complete AI App Crisis Management System - Free Emergency Protocols',
+    description: 'Complete emergency protocol system to rescue failing AI projects. 8-step diagnostic framework and recovery protocols.',
+    url: 'https://extensa.dev/extensa-offer/debug-guide',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
+};
 
 export default function CrisisManagementSystem() {
-  const router = useRouter();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <button
-            onClick={() => router.back()}
+          <Link
+            href="/extensa-offer"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </button>
+          </Link>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
