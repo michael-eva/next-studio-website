@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { CheckCircle, Copy, ArrowRight, Brain, AlertTriangle, Clock } from 'lucide-react';
@@ -17,7 +17,7 @@ interface PaymentSuccessData {
   message?: string;
 }
 
-export default function PaymentSuccess() {
+function PaymentSuccessContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -252,89 +252,59 @@ export default function PaymentSuccess() {
               </div>
             </div>
 
-            <div className="text-center">
-              <p className="text-gray-600 mb-4">
-                {paymentData.message}
-              </p>
+            <Link
+              href="/secretroute"
+              className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg text-center transition-colors text-lg"
+            >
+              <ArrowRight className="w-5 h-5 inline mr-2" />
+              Return to Home
+            </Link>
+          </div>
+        )}
+
+        {/* Additional Information */}
+        <div className="bg-gray-50 rounded-2xl p-8">
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">Need Help?</h3>
+          <div className="space-y-4">
+            <p className="text-gray-600">
+              If you have any questions about your purchase or need assistance, please don't hesitate to contact our support team.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/contact"
+                className="flex-1 bg-white border border-gray-300 text-gray-700 px-6 py-3 rounded-lg text-center hover:bg-gray-50 transition-colors"
+              >
+                Contact Support
+              </Link>
               <Link
                 href="/secretroute"
-                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                className="flex-1 bg-gray-800 text-white px-6 py-3 rounded-lg text-center hover:bg-gray-900 transition-colors"
               >
-                <ArrowRight className="w-4 h-4" />
                 Back to Home
               </Link>
             </div>
           </div>
-        )}
-
-        {/* Next Steps */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            What's Next?
-          </h3>
-          <div className="space-y-4">
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-blue-600 font-semibold text-sm">1</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">Save your access code</p>
-                <p className="text-gray-600 text-sm">Keep it handy - you'll need it each time you access the AI Agent</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-blue-600 font-semibold text-sm">2</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">Start troubleshooting</p>
-                <p className="text-gray-600 text-sm">Describe your AI app issues to get instant, expert guidance</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-blue-600 font-semibold text-sm">3</span>
-              </div>
-              <div>
-                <p className="font-medium text-gray-900">Get your project back on track</p>
-                <p className="text-gray-600 text-sm">Follow the AI Agent's step-by-step solutions to fix your issues</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Important Notice */}
-        <div className="bg-yellow-50 border border-yellow-200 rounded-2xl p-6 mb-8">
-          <div className="flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
-            <div>
-              <h4 className="font-semibold text-yellow-900 mb-2">Important Notice</h4>
-              <p className="text-yellow-800 text-sm">
-                We don't save your chat history. If you switch to a different device or browser,
-                your conversation will start fresh. Make sure to save any important information
-                from your chat sessions.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Support */}
-        <div className="text-center">
-          <p className="text-gray-600 mb-4">
-            Need help? Contact us at{' '}
-            <a href="mailto:michael@extensa.studio" className="text-blue-600 hover:text-blue-800">
-              support@extensa.studio
-            </a>
-          </p>
-          {/* <Link
-            href="/secretroute"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            <ArrowRight className="w-4 h-4" />
-            Back to Home
-          </Link> */}
         </div>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading payment information...</p>
+      </div>
+    </div>
+  );
+}
+
+export default function PaymentSuccess() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <PaymentSuccessContent />
+    </Suspense>
   );
 } 
