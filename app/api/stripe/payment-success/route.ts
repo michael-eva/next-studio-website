@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCheckoutSession } from "@/app/lib/stripe";
 import { accessCodeService } from "@/app/lib/access-code-service";
+import { sendEmailWithAccessCode } from "@/app/services/resend";
 
 export async function POST(req: NextRequest) {
   try {
@@ -41,6 +42,9 @@ export async function POST(req: NextRequest) {
         session.customer as string
       );
     }
+
+    // Send email with access code
+    await sendEmailWithAccessCode(accessCode.code, accessCode.email);
 
     // Return the payment success data
     return NextResponse.json({
