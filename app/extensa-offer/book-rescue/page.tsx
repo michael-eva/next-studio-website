@@ -2,27 +2,53 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, AlertTriangle, CheckCircle, Shield, Clock, FileText, Brain, CreditCard, Lock, Calendar, Users, Target } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function BookEmergencyRescue() {
   const [selectedUrgency, setSelectedUrgency] = useState<'standard' | 'rush'>('standard');
-  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const standardPrice = 2000;
   const rushPrice = 3500;
   const currentPrice = selectedUrgency === 'rush' ? rushPrice : standardPrice;
+
+  const handleEmergencyAssessmentPayment = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/stripe/emergency-assessment-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          urgency: selectedUrgency,
+          cancelUrl: window.location.href // Pass current page URL as cancel URL
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Failed to start checkout. Please try again.');
+      }
+    } catch (err) {
+      alert('Error connecting to payment gateway.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/secretroute/rescue-assessment"
+          <button
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Assessment Details
-          </Link>
+            Back
+          </button>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
@@ -46,8 +72,8 @@ export default function BookEmergencyRescue() {
           <div className="grid md:grid-cols-2 gap-6">
             <div
               className={`cursor-pointer rounded-xl p-6 border-2 transition-all ${selectedUrgency === 'standard'
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                ? 'border-blue-500 bg-blue-50'
+                : 'border-gray-200 hover:border-gray-300'
                 }`}
               onClick={() => setSelectedUrgency('standard')}
             >
@@ -81,8 +107,8 @@ export default function BookEmergencyRescue() {
 
             <div
               className={`cursor-pointer rounded-xl p-6 border-2 transition-all relative ${selectedUrgency === 'rush'
-                  ? 'border-red-500 bg-red-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                ? 'border-red-500 bg-red-50'
+                : 'border-gray-200 hover:border-gray-300'
                 }`}
               onClick={() => setSelectedUrgency('rush')}
             >
@@ -245,11 +271,12 @@ export default function BookEmergencyRescue() {
 
           <div className="text-center space-y-6">
             <button
-              onClick={() => setShowPaymentForm(true)}
-              className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg text-lg"
+              onClick={handleEmergencyAssessmentPayment}
+              disabled={loading}
+              className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors shadow-lg text-lg disabled:opacity-60"
             >
               <Lock className="w-6 h-6" />
-              Pay ${currentPrice.toLocaleString()} & Start Assessment
+              {loading ? 'Redirecting to Payment...' : `Pay ${currentPrice.toLocaleString()} & Start Assessment`}
               <CreditCard className="w-6 h-6" />
             </button>
 
@@ -274,40 +301,7 @@ export default function BookEmergencyRescue() {
           </div>
         </div>
 
-        {/* Payment Form Modal/Section */}
-        {showPaymentForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl max-w-md w-full p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                Complete Payment - ${currentPrice.toLocaleString()} AUD
-              </h3>
 
-              {/* This is where you'd integrate Stripe or your payment processor */}
-              <div className="space-y-4">
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-sm text-blue-800">
-                <strong>Stripe Integration:</strong> Connect your Stripe account here to process the ${currentPrice.toLocaleString()} AUD payment. 
-                Stripe handles all security and triggers automated email confirmations with next steps.
-                </p>
-                </div>
-
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => setShowPaymentForm(false)}
-                    className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-4 rounded-lg transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
-                  >
-                    Process Payment
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Trust Signals */}
         {/* <div className="mt-8 text-center">

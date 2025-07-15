@@ -2,9 +2,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Clock, DollarSign, Users, Star, Zap, Target, Brain, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function EmergencyRescueAssessment() {
+  const router = useRouter();
   const [showFAQ, setShowFAQ] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const toggleFAQ = (index: number) => {
     setShowFAQ(showFAQ === index ? null : index);
@@ -37,18 +40,41 @@ export default function EmergencyRescueAssessment() {
     }
   ];
 
+  const handleBuyAIAgent = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cancelUrl: window.location.href // Pass current page URL as cancel URL
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Failed to start checkout. Please try again.');
+      }
+    } catch (err) {
+      alert('Error connecting to payment gateway.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/secretroute"
+          <button
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </Link>
+          </button>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
@@ -236,7 +262,7 @@ export default function EmergencyRescueAssessment() {
               From AI-powered guidance to full professional rescue - we have the solution for your crisis level.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* AI Agent Option */}
             <div className="bg-white/10 rounded-xl p-6 border border-blue-400">
@@ -278,12 +304,13 @@ export default function EmergencyRescueAssessment() {
                   <span>30-day access</span>
                 </div>
               </div>
-              <Link
-                href="/secretroute/book-ai-agent"
-                className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+              <button
+                onClick={handleBuyAIAgent}
+                className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors disabled:opacity-60"
+                disabled={loading}
               >
-                Get AI Recovery Agent
-              </Link>
+                {loading ? 'Redirecting...' : 'Get AI Recovery Agent'}
+              </button>
               <p className="text-xs text-gray-400 mt-2 text-center">
                 Perfect when you need intelligent guidance but can implement fixes yourself
               </p>
@@ -343,7 +370,7 @@ export default function EmergencyRescueAssessment() {
                 </div>
               </div>
               <Link
-                href="/secretroute/book-rescue"
+                href="/extensa-offer/book-rescue"
                 className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
               >
                 Book Emergency Assessment
@@ -353,7 +380,7 @@ export default function EmergencyRescueAssessment() {
               </p>
             </div>
           </div>
-          
+
           <div className="text-center mt-8">
             <div className="bg-green-600 text-white px-6 py-3 rounded-lg mb-4 inline-block">
               <p className="font-semibold">Compare this to:</p>
@@ -430,15 +457,16 @@ export default function EmergencyRescueAssessment() {
             Every day you wait, your project gets harder to save and stakeholder confidence drops further. Choose your intervention level and get help now.
           </p>
           <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto mb-6">
-            <Link
-              href="/secretroute/book-ai-agent"
-              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+            <button
+              onClick={handleBuyAIAgent}
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors disabled:opacity-60"
+              disabled={loading}
             >
               <Brain className="w-5 h-5" />
-              Get AI Agent - $197
-            </Link>
+              {loading ? 'Redirecting...' : 'Get AI Agent - $197'}
+            </button>
             <Link
-              href="/secretroute/book-rescue"
+              href="/extensa-offer/book-rescue"
               className="inline-flex items-center justify-center gap-2 bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors border-2 border-white"
             >
               <AlertTriangle className="w-5 h-5" />

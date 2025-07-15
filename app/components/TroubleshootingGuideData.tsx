@@ -428,7 +428,7 @@ export const PremiumTeaser = () => {
         {/* CTA Section */}
         <div className="text-center">
           <Link
-            href="/secretroute/premium"
+            href="/extensa-offer/premium"
             className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Access Premium Guide
@@ -1488,12 +1488,12 @@ export const EnhancedFrameworkSteps = ({ showAll = false, autoShowQuickChecks = 
           You've tried asking your AI assistant to "fix it, dammit" but nothing has worked so far.
           These systematic steps will help you identify and resolve the issue.
         </p>
-        <p className="text-base lg:text-lg text-gray-500 font-light max-w-4xl mx-auto leading-relaxed mt-4">
+        {/* <p className="text-base lg:text-lg text-gray-500 font-light max-w-4xl mx-auto leading-relaxed mt-4">
           If you're just starting out a project and want to know good practices to follow to start building from a good foundation,{' '}
           <a href="#best-practices" className="text-blue-600 hover:text-blue-700 underline font-medium transition-colors">
             click here
           </a>.
-        </p>
+        </p> */}
 
         {/* Progress & Quick Tools */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
