@@ -46,7 +46,7 @@ export default function PaymentCancelled() {
             {loading ? 'Redirecting...' : 'Try Again'}
           </button>
           <Link
-            href="/secretroute"
+            href="/extensa-offer"
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

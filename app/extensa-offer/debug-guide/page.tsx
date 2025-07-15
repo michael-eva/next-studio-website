@@ -47,7 +47,7 @@ export default function CrisisManagementSystem() {
               <div className="bg-white rounded-lg p-4">
                 <p className="text-sm text-gray-700">
                   <strong>Still broken after trying this system?</strong> Your project has deeper structural problems that require expert codebase analysis.
-                  <Link href="/secretroute/rescue-assessment" className="text-red-600 hover:text-red-700 font-medium ml-1">
+                  <Link href="/extensa-offer/rescue-assessment" className="text-red-600 hover:text-red-700 font-medium ml-1">
                     Learn about Emergency Project Rescue Assessment →
                   </Link>
                 </p>
@@ -191,7 +191,7 @@ export default function CrisisManagementSystem() {
             <p className="text-red-100 text-sm">Complete codebase analysis • Professional diagnostic report • Strategic recovery roadmap</p>
           </div>
           <Link
-            href="/secretroute/rescue-assessment"
+            href="/extensa-offer/rescue-assessment"
             className="inline-flex items-center gap-3 bg-white text-red-600 font-semibold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-lg"
           >
             <ArrowRight className="w-5 h-5" />

@@ -428,7 +428,7 @@ export const PremiumTeaser = () => {
         {/* CTA Section */}
         <div className="text-center">
           <Link
-            href="/secretroute/premium"
+            href="/extensa-offer/premium"
             className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Access Premium Guide

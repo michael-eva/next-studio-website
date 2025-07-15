@@ -591,7 +591,7 @@ export default function AIRecoveryAgent() {
                     <span className="font-semibold text-orange-900 text-sm">Need human help?</span>
                   </div>
                   <Link
-                    href="/secretroute/book-rescue"
+                    href="/extensa-offer/book-rescue"
                     className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-medium px-3 py-1.5 rounded text-xs transition-colors flex-shrink-0"
                   >
                     <Users className="w-3 h-3" />

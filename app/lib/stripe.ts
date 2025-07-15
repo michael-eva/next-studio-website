@@ -36,8 +36,8 @@ export async function createCheckoutSession(email?: string) {
       },
     ],
     mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/secretroute/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/secretroute/payment-cancelled`,
+    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/extensa-offer/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/extensa-offer/payment-cancelled`,
     customer_email: email,
     metadata: {
       product: "ai_agent_access",

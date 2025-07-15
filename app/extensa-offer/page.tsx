@@ -188,7 +188,7 @@ const DebugGuidePage: React.FC = () => {
             </div>
           </div>
           <Link
-            href="/secretroute/debug-guide"
+            href="/extensa-offer/debug-guide"
             className="inline-flex items-center gap-3 bg-white text-blue-600 font-semibold px-8 py-4 rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
           >
             <ArrowRight className="w-5 h-5" />
@@ -231,7 +231,7 @@ const DebugGuidePage: React.FC = () => {
             </div>
           </div>
           <Link
-            href="/secretroute/rescue-assessment"
+            href="/extensa-offer/rescue-assessment"
             className="inline-flex items-center gap-3 bg-white text-red-600 font-semibold px-8 py-4 rounded-xl hover:bg-red-50 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
           >
             <ArrowRight className="w-5 h-5" />
@@ -249,7 +249,7 @@ const DebugGuidePage: React.FC = () => {
             Your project doesn't have to be a disaster. Get the complete crisis management system and turn your catastrophe into a success story.
           </p>
           <Link
-            href="/secretroute/debug-guide"
+            href="/extensa-offer/debug-guide"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold px-8 py-4 rounded-xl hover:from-blue-700 hover:to-indigo-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-105 duration-200"
           >
             <ArrowRight className="w-5 h-5" />
@@ -357,7 +357,7 @@ const DebugGuidePage: React.FC = () => {
 
               <div className="mt-8 flex justify-center">
                 <Link
-                  href="/secretroute/premium"
+                  href="/extensa-offer/premium"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-semibold px-8 py-3 rounded-lg hover:from-yellow-500 hover:to-orange-600 transition-all"
                 >
                   Unlock Complete Framework

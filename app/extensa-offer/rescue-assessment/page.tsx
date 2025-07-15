@@ -370,7 +370,7 @@ export default function EmergencyRescueAssessment() {
                 </div>
               </div>
               <Link
-                href="/secretroute/book-rescue"
+                href="/extensa-offer/book-rescue"
                 className="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
               >
                 Book Emergency Assessment
@@ -466,7 +466,7 @@ export default function EmergencyRescueAssessment() {
               {loading ? 'Redirecting...' : 'Get AI Agent - $197'}
             </button>
             <Link
-              href="/secretroute/book-rescue"
+              href="/extensa-offer/book-rescue"
               className="inline-flex items-center justify-center gap-2 bg-white text-red-600 font-semibold px-6 py-3 rounded-xl hover:bg-red-50 transition-colors border-2 border-white"
             >
               <AlertTriangle className="w-5 h-5" />

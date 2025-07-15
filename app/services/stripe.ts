@@ -51,10 +51,10 @@ export async function createCheckoutSession(
       },
     ],
     mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/secretroute/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/extensa-offer/payment-success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url:
       cancelUrl ||
-      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/secretroute/payment-cancelled`,
+      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/extensa-offer/payment-cancelled`,
     customer_email: email,
     metadata: {
       product: "ai_agent_access",
@@ -99,10 +99,10 @@ export async function createEmergencyAssessmentCheckoutSession(
       },
     ],
     mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/secretroute/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/extensa-offer/payment-success?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url:
       cancelUrl ||
-      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/secretroute/payment-cancelled`,
+      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/extensa-offer/payment-cancelled`,
     customer_email: email,
     metadata: {
       product: "emergency_assessment",
