@@ -4,20 +4,22 @@ import { EnhancedTroubleshootingTips, EnhancedFrameworkSteps, Step0QuickChecks }
 import TroubleshootingGuide from '../premium/components/TroubleshootingGuide';
 import Link from 'next/link';
 import { ArrowLeft, AlertTriangle, CheckCircle, ArrowRight, Users, Star } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function CrisisManagementSystem() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/secretroute"
+          <button
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </Link>
+          </button>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
@@ -44,7 +46,7 @@ export default function CrisisManagementSystem() {
               </p>
               <div className="bg-white rounded-lg p-4">
                 <p className="text-sm text-gray-700">
-                  <strong>Still broken after trying this system?</strong> Your project has deeper structural problems that require expert codebase analysis. 
+                  <strong>Still broken after trying this system?</strong> Your project has deeper structural problems that require expert codebase analysis.
                   <Link href="/secretroute/rescue-assessment" className="text-red-600 hover:text-red-700 font-medium ml-1">
                     Learn about Emergency Project Rescue Assessment →
                   </Link>

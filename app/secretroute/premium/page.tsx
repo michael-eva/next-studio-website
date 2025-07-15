@@ -4,20 +4,22 @@ import Link from 'next/link';
 import { ArrowLeft, Star, Download, Search, ArrowRight } from 'lucide-react';
 import { EnhancedFrameworkSteps, EnhancedTroubleshootingTips, Step0QuickChecks } from '../../components/TroubleshootingGuideData';
 import TroubleshootingGuide from './components/TroubleshootingGuide';
+import { useRouter } from 'next/navigation';
 
 const PremiumDebugGuidePage: React.FC = () => {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/secretroute"
+          <button
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </Link>
+          </button>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">

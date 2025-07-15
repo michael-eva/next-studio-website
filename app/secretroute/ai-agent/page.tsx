@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Send, Brain, AlertTriangle, CheckCircle, Copy, RefreshCw, MessageSquare, Zap, Clock, Users, Trash2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 interface Message {
   id: string;
@@ -14,6 +15,7 @@ interface Message {
 const CURRENT_SESSION_KEY = 'ai_recovery_agent_current_session';
 
 export default function AIRecoveryAgent() {
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -245,13 +247,13 @@ export default function AIRecoveryAgent() {
       {/* Fixed Header with Back Button */}
       <div className="flex-shrink-0 px-4 py-3 bg-gray-50 border-b border-gray-200">
         <div className="max-w-2xl mx-auto">
-          <Link
-            href="/secretroute"
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
+          <button
+            onClick={() => router.back()}
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -398,7 +400,7 @@ export default function AIRecoveryAgent() {
                 <span className="font-semibold text-orange-900 text-sm">Need human help?</span>
               </div>
               <Link
-                href="/secretroute/rescue-assessment"
+                href="/secretroute/book-rescue"
                 className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-medium px-3 py-1.5 rounded text-xs transition-colors flex-shrink-0"
               >
                 <Users className="w-3 h-3" />

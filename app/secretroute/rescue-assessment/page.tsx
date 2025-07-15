@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, AlertTriangle, CheckCircle, ArrowRight, Shield, FileText, Clock, DollarSign, Users, Star, Zap, Target, Brain, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function EmergencyRescueAssessment() {
+  const router = useRouter();
   const [showFAQ, setShowFAQ] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -42,13 +44,13 @@ export default function EmergencyRescueAssessment() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/secretroute"
+          <button
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </Link>
+          </button>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
@@ -236,7 +238,7 @@ export default function EmergencyRescueAssessment() {
               From AI-powered guidance to full professional rescue - we have the solution for your crisis level.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {/* AI Agent Option */}
             <div className="bg-white/10 rounded-xl p-6 border border-blue-400">
@@ -353,7 +355,7 @@ export default function EmergencyRescueAssessment() {
               </p>
             </div>
           </div>
-          
+
           <div className="text-center mt-8">
             <div className="bg-green-600 text-white px-6 py-3 rounded-lg mb-4 inline-block">
               <p className="font-semibold">Compare this to:</p>

@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from "@/app/lib/supabase";
+import { supabaseAdmin } from "@/app/lib/supabase";
 
 interface ContactFormData {
   name: string;
@@ -9,7 +9,7 @@ interface ContactFormData {
 
 export async function submitContactForm(formData: ContactFormData) {
   // Get server-side Supabase client
-  const supabase = await createServerSupabaseClient();
+  const supabase = await supabaseAdmin;
 
   // First, try to insert into contacts (will silently fail if email exists)
   await supabase

@@ -2234,7 +2234,7 @@ const troubleshootingData: TroubleshootingData = {
   platforms: [
     {
       id: "bolt",
-      name: "StackBlitz",
+      name: "Bolt",
       description: "AI-powered full-stack development platform",
       logo: "/stack/bolt.svg",
       color: "#ff6b6b",

@@ -2,10 +2,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, AlertTriangle, CheckCircle, Shield, Clock, FileText, Brain, CreditCard, Lock, Calendar, Users, Target } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function BookEmergencyRescue() {
   const [selectedUrgency, setSelectedUrgency] = useState<'standard' | 'rush'>('standard');
   const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const router = useRouter();
 
   const standardPrice = 2000;
   const rushPrice = 3500;
@@ -16,13 +18,13 @@ export default function BookEmergencyRescue() {
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* Header Section */}
         <div className="mb-8">
-          <Link
-            href="/secretroute/rescue-assessment"
+          <button
+            onClick={() => router.back()}
             className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Assessment Details
-          </Link>
+            Back
+          </button>
 
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-full text-lg font-semibold mb-6">
@@ -46,8 +48,8 @@ export default function BookEmergencyRescue() {
           <div className="grid md:grid-cols-2 gap-6">
             <div
               className={`cursor-pointer rounded-xl p-6 border-2 transition-all ${selectedUrgency === 'standard'
-                  ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                ? 'border-blue-500 bg-blue-50'
+                : 'border-gray-200 hover:border-gray-300'
                 }`}
               onClick={() => setSelectedUrgency('standard')}
             >
@@ -81,8 +83,8 @@ export default function BookEmergencyRescue() {
 
             <div
               className={`cursor-pointer rounded-xl p-6 border-2 transition-all relative ${selectedUrgency === 'rush'
-                  ? 'border-red-500 bg-red-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                ? 'border-red-500 bg-red-50'
+                : 'border-gray-200 hover:border-gray-300'
                 }`}
               onClick={() => setSelectedUrgency('rush')}
             >
@@ -285,10 +287,10 @@ export default function BookEmergencyRescue() {
               {/* This is where you'd integrate Stripe or your payment processor */}
               <div className="space-y-4">
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p className="text-sm text-blue-800">
-                <strong>Stripe Integration:</strong> Connect your Stripe account here to process the ${currentPrice.toLocaleString()} AUD payment. 
-                Stripe handles all security and triggers automated email confirmations with next steps.
-                </p>
+                  <p className="text-sm text-blue-800">
+                    <strong>Stripe Integration:</strong> Connect your Stripe account here to process the ${currentPrice.toLocaleString()} AUD payment.
+                    Stripe handles all security and triggers automated email confirmations with next steps.
+                  </p>
                 </div>
 
                 <div className="flex gap-3">
