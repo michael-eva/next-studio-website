@@ -46,7 +46,9 @@ export default function AIRecoveryAgent() {
       const res = await fetch('/api/stripe/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}), // Optionally add email if available
+        body: JSON.stringify({
+          cancelUrl: window.location.href // Pass current page URL as cancel URL
+        }),
       });
       const data = await res.json();
       if (data.url) {

@@ -3,8 +3,8 @@ import { createCheckoutSession } from "@/app/services/stripe";
 
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
-    const session = await createCheckoutSession(email);
+    const { email, cancelUrl } = await req.json();
+    const session = await createCheckoutSession(email, cancelUrl);
     return NextResponse.json({ url: session.url });
   } catch (error: any) {
     console.error("Stripe checkout error:", error);
