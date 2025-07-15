@@ -434,6 +434,12 @@ export default function AIRecoveryAgent() {
                   </button>
 
                   <div className="mt-4 text-center">
+                    {accessError && accessError.includes('expired') && (
+                      <div className="mb-3 p-3 bg-orange-50 border border-orange-200 rounded-lg">
+                        <p className="text-orange-700 text-sm font-medium">Your access token has expired</p>
+                        <p className="text-orange-600 text-xs mt-1">Purchase a new access code to continue using the AI Recovery Agent</p>
+                      </div>
+                    )}
                     <p className="text-gray-500 text-sm mb-2">Don't have an access code?</p>
                     <button
                       onClick={handleBuyAIAgent}

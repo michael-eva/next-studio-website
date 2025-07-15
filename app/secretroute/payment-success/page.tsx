@@ -251,8 +251,8 @@ export default function PaymentSuccess() {
         <div className="text-center">
           <p className="text-gray-600 mb-4">
             Need help? Contact us at{' '}
-            <a href="mailto:support@extensa.com" className="text-blue-600 hover:text-blue-800">
-              support@extensa.com
+            <a href="mailto:michael@extensa.studio" className="text-blue-600 hover:text-blue-800">
+              support@extensa.studio
             </a>
           </p>
           {/* <Link
