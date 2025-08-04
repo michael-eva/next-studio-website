@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { AlertTriangle, Brain, Users } from 'lucide-react';
 
 export default function OfferNavbar() {
     const pathname = usePathname();
@@ -22,15 +21,15 @@ export default function OfferNavbar() {
                             <p className="text-2xl font-bold text-blue-600">Extensa</p>
                         </Link>
                     </div>
-                    <nav className="hidden md:flex space-x-6">
-                        <Link href="/extensa-offer/debug-guide" className="text-gray-600 hover:text-red-600 transition duration-300 font-medium">Crisis Management System</Link>
-                        <Link href="/extensa-offer/ai-agent" className="text-gray-600 hover:text-blue-600 transition duration-300 font-medium flex items-center gap-1">
-                            <Brain className="w-4 h-4" />
-                            AI Recovery Agent
+                    <nav className="hidden md:flex space-x-8 items-center">
+                        <Link href="/extensa-offer/debug-guide" className="text-gray-700 hover:text-gray-900 transition duration-300 font-medium">
+                            Free Debug Guide
                         </Link>
-                        <Link href="/extensa-offer/rescue-assessment" className="text-gray-600 hover:text-red-600 transition duration-300 font-medium flex items-center gap-1">
-                            <Users className="w-4 h-4" />
-                            Emergency Assessment
+                        <div className="text-gray-400 text-sm">
+                            Still broken?
+                        </div>
+                        <Link href="/extensa-offer/rescue-assessment" className="text-blue-600 hover:text-blue-700 transition duration-300 font-medium">
+                            Get Expert Help
                         </Link>
                     </nav>
                     <button
@@ -56,37 +55,31 @@ export default function OfferNavbar() {
                     </button>
                     <div className="hidden md:block">
                         <Link href="/extensa-offer/debug-guide"
-                            className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-lg hover:from-red-700 hover:to-red-800 transition duration-300 shadow-md flex items-center gap-2 font-semibold">
-                            <AlertTriangle className="w-4 h-4" />
-                            Start Crisis Recovery
+                            className="bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-lg hover:from-green-700 hover:to-green-800 transition duration-300 shadow-md font-semibold">
+                            Fix My App (Free)
                         </Link>
                     </div>
                 </div>
                 <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-                    <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+                    <div className="px-2 pt-2 pb-3 space-y-3 bg-white border-t border-gray-200">
                         <Link href="/extensa-offer/debug-guide"
                             onClick={handleMenuItemClick}
-                            className="block px-3 py-2 text-gray-600 hover:text-red-600 transition duration-300 font-medium">
-                            Crisis Management System (Free)
+                            className="block px-3 py-2 text-gray-700 hover:text-gray-900 transition duration-300 font-medium">
+                            Free Debug Guide
                         </Link>
-                        <Link href="/extensa-offer/ai-agent"
-                            onClick={handleMenuItemClick}
-                            className="block px-3 py-2 text-gray-600 hover:text-blue-600 transition duration-300 font-medium flex items-center gap-2">
-                            <Brain className="w-4 h-4" />
-                            AI Recovery Agent ($197)
-                        </Link>
+                        <div className="px-3 py-1 text-gray-400 text-sm border-l-2 border-gray-200">
+                            Still broken after trying the free guide?
+                        </div>
                         <Link href="/extensa-offer/rescue-assessment"
                             onClick={handleMenuItemClick}
-                            className="block px-3 py-2 text-gray-600 hover:text-red-600 transition duration-300 font-medium flex items-center gap-2">
-                            <Users className="w-4 h-4" />
-                            Emergency Assessment ($2,000)
+                            className="block px-3 py-2 text-blue-600 hover:text-blue-700 transition duration-300 font-medium">
+                            Get Expert Help
                         </Link>
-                        <div className="border-t border-gray-200 mt-2">
+                        <div className="border-t border-gray-200 mt-4 pt-3">
                             <Link href="/extensa-offer/debug-guide"
                                 onClick={handleMenuItemClick}
-                                className="block px-3 py-3 mt-2 text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition duration-300 text-center rounded-lg mx-2 font-semibold flex items-center justify-center gap-2">
-                                <AlertTriangle className="w-4 h-4" />
-                                Start Crisis Recovery
+                                className="block px-3 py-3 text-white bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 transition duration-300 text-center rounded-lg mx-2 font-semibold">
+                                Fix My App (Free)
                             </Link>
                         </div>
                     </div>

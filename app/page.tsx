@@ -129,7 +129,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
               Client Testimonials
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-lg shadow-md">
                 <div className="mb-6">
                   <svg className="w-8 h-8 text-blue-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
@@ -166,6 +166,26 @@ export default function Home() {
                   <div className="ml-4">
                     <p className="font-semibold text-gray-800">Will</p>
                     <p className="text-gray-600">Nectar</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-8 rounded-lg shadow-md">
+                <div className="mb-6">
+                  <svg className="w-8 h-8 text-blue-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+                <p className="text-gray-700 text-lg mb-6 italic">
+                  "Working closely with Michael over an 8-month prototype project gave me deep appreciation for his curiosity, communication skills, problem-solving abilities, and technical development expertise. He asks the right questions, keeps everyone in the loop, and tackles challenges with both creativity and solid technical execution. If I had to choose a developer to be in the trenches with on a difficult project, it would always be Michael."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+                    D
+                  </div>
+                  <div className="ml-4">
+                    <p className="font-semibold text-gray-800">Dave</p>
+                    <p className="text-gray-600">BetterLabs</p>
                   </div>
                 </div>
               </div>
