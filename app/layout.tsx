@@ -15,19 +15,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Extensa - Custom Software That Works the Way You Do",
-  description: "We help established businesses unlock productivity by customising their existing software to fit their exact processes—eliminating double handling, reducing admin, and enabling teams to focus on meaningful work.",
+  title: "AI Automation & Web Development Perth | Extensa - SMB Solutions",
+  description: "Perth-based AI automation and web development for SMBs. Save 10-20 hours weekly with AI chatbots, document processing, and custom web apps. Free automation assessment available.",
+  keywords: "AI automation Perth, web development Perth, AI chatbot development, document automation, workflow automation, custom web applications, Perth SMB software, business automation Australia",
   openGraph: {
-    title: "Extensa - Custom Software for Established Businesses",
-    description: "Eliminate admin headaches and streamline your business with custom software solutions designed for your exact workflows. Perth-based team serving businesses worldwide.",
+    title: "AI Automation & Web Development for Perth SMBs | Extensa",
+    description: "Stop wasting time on repetitive tasks. AI-powered automation and custom web apps for Perth SMBs. Chatbots, document processing, workflow automation. Free assessment.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
+    locale: "en_AU",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Extensa - Custom Software That Works the Way You Do",
-    description: "Streamline your business processes with custom software solutions. Workflow automation, integrations, and ongoing support.",
+    title: "AI Automation & Web Development Perth | Extensa",
+    description: "Perth SMBs save 10-20 hours weekly with our AI automation. Chatbots, document processing, custom web apps. Get your free automation assessment.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
-  }
+  },
+  alternates: {
+    canonical: "https://www.extensa.studio",
+  },
 };
 
 export default function RootLayout({
@@ -51,6 +57,104 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-XT57B4WKDY');
           `,
+        }}
+      />
+      <Script
+        id="schema-local-business"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Extensa",
+            "description": "AI automation and web development services for Perth SMBs. Specializing in chatbots, document processing, workflow automation, and custom web applications.",
+            "url": "https://www.extensa.studio",
+            "telephone": "",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Perth",
+              "addressRegion": "WA",
+              "addressCountry": "AU"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -31.9505,
+              "longitude": 115.8605
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Australia"
+            },
+            "priceRange": "$$",
+            "serviceType": ["AI Automation", "Web Development", "Custom Software Development", "Chatbot Development", "Workflow Automation"],
+            "openingHours": "Mo-Fr 09:00-17:00",
+            "sameAs": []
+          })
+        }}
+      />
+      <Script
+        id="schema-service"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "AI Automation & Web Development",
+            "provider": {
+              "@type": "Organization",
+              "name": "Extensa"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Australia"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "AI Automation and Web Development Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Customer Service Automation",
+                    "description": "AI-powered chatbots and automated email responses for 24/7 customer support"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Document & Data Processing",
+                    "description": "Automated invoice processing, data entry, and document extraction with AI"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Workflow Automation & Integration",
+                    "description": "Connect tools and automate repetitive workflows with API integrations"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Custom Web Applications",
+                    "description": "Tailored SaaS applications, customer portals, and internal dashboards"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Business Website Development",
+                    "description": "SEO-optimized, responsive websites for growing businesses"
+                  }
+                }
+              ]
+            }
+          })
         }}
       />
       <body

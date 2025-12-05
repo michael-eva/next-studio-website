@@ -2,8 +2,6 @@ import CollaborationsCarousel from './components/CollaborationsCarousel'
 import ContactForm from './components/ContactForm'
 
 export default function Home() {
-  console.log('Home');
-
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
@@ -12,21 +10,46 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 py-16 md:py-24">
             <div className="md:w-2/3 animate-fadeIn">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Custom Software That Works the Way You Do
+                AI Automation & Web Development for Perth SMBs
               </h1>
               <p className="text-xl md:text-2xl mb-8">
-                We help established businesses unlock productivity by customising their existing software to fit their exact processes—eliminating double handling, reducing admin, and enabling teams to focus on meaningful work.
+                Stop wasting time on repetitive tasks. We build AI-powered automation and custom web applications that handle the busy work, so your team can focus on growing your business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a href="#contact"
-                  className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition duration-300 inline-block shadow-lg text-center">
-                  Book a Free Consultation
+                  className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 inline-block shadow-lg text-center animate-pulse-glow">
+                  Get Your Free Automation Assessment
                 </a>
-                {/* <a href="#process-guide"
-                  className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300 inline-block text-center">
-                  Download Process Guide
-                </a> */}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Problem/Pain Points Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
+              Is Your Team Drowning in Repetitive Work?
+            </h2>
+            <p className="text-center text-gray-600 text-lg mb-12 max-w-3xl mx-auto">
+              Most SMBs waste 10-20 hours per week on manual tasks that AI could handle in seconds. Data entry, customer inquiries, document processing - it all adds up.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <article className="text-center p-6 hover-lift">
+                <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg animate-float"></div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Manual Data Entry</h3>
+                <p className="text-gray-600">Your team spends hours copying information between systems instead of serving customers</p>
+              </article>
+              <article className="text-center p-6 hover-lift">
+                <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg animate-float" style={{animationDelay: '0.3s'}}></div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Repetitive Customer Questions</h3>
+                <p className="text-gray-600">Same questions answered over and over via email while important work piles up</p>
+              </article>
+              <article className="text-center p-6 hover-lift">
+                <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg animate-float" style={{animationDelay: '0.6s'}}></div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">Document Processing Bottlenecks</h3>
+                <p className="text-gray-600">Invoices, quotes, and forms require manual review and data extraction</p>
+              </article>
             </div>
           </div>
         </section>
@@ -34,90 +57,112 @@ export default function Home() {
         {/* Replace the old Projects section with the new component */}
         <CollaborationsCarousel />
 
-        {/* Main Value Proposition */}
-        <section className="py-16 bg-white">
+        {/* Services */}
+        <section id="services" className="py-16 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-              Eliminate Admin Headaches. Streamline Your Business.
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
+              AI Automation & Web Development Services
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <article className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Workflow Automation</h3>
-                <p className="text-gray-600">Automate repetitive tasks and connect your tools for seamless processes that save hours every day.</p>
+            <p className="text-center text-gray-600 text-lg mb-12 max-w-3xl mx-auto">
+              From intelligent chatbots to custom web applications, we build solutions that save time and drive growth for Perth SMBs.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <article className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+                <div className="w-12 h-12 mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg group-hover:rotate-6 group-hover:scale-110 transition-all duration-300"></div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">AI Customer Service Automation</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">Deploy intelligent chatbots and automated email responses that handle common inquiries 24/7, freeing your team for complex customer needs.</p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>AI-powered chatbots</li>
+                  <li>Email automation</li>
+                  <li>FAQ handling</li>
+                  <li>Lead qualification</li>
+                </ul>
               </article>
-              <article className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Custom Integrations</h3>
-                <p className="text-gray-600">Connect your existing systems to work together, eliminating double data entry and manual workarounds.</p>
+              <article className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+                <div className="w-12 h-12 mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg group-hover:rotate-6 group-hover:scale-110 transition-all duration-300"></div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Document & Data Processing</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">Automate invoice processing, data entry, and document extraction with AI that reads and processes information faster than any human.</p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>Invoice processing</li>
+                  <li>Form data extraction</li>
+                  <li>PDF automation</li>
+                  <li>Data validation</li>
+                </ul>
               </article>
-              <article className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Legacy Modernisation</h3>
-                <p className="text-gray-600">Upgrade and enhance your current systems without starting from scratch—preserve your investment while improving efficiency.</p>
+              <article className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+                <div className="w-12 h-12 mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg group-hover:rotate-6 group-hover:scale-110 transition-all duration-300"></div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Workflow Automation & Integration</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">Connect your tools and automate repetitive workflows. CRM updates, inventory syncing, report generation—all handled automatically.</p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>API integrations</li>
+                  <li>Multi-system automation</li>
+                  <li>Scheduled tasks</li>
+                  <li>Alert systems</li>
+                </ul>
               </article>
-              <article className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Ongoing Support</h3>
-                <p className="text-gray-600">Fixed-hour retainers for maintenance and feature upgrades—no surprise costs for bug fixes.</p>
+              <article className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+                <div className="w-12 h-12 mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg group-hover:rotate-6 group-hover:scale-110 transition-all duration-300"></div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Custom Web Applications</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">Build tailored web apps that match your exact business processes. Client portals, booking systems, internal tools—whatever you need.</p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>SaaS applications</li>
+                  <li>Customer portals</li>
+                  <li>Internal dashboards</li>
+                  <li>Booking systems</li>
+                </ul>
+              </article>
+              <article className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+                <div className="w-12 h-12 mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg group-hover:rotate-6 group-hover:scale-110 transition-all duration-300"></div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Business Website Development</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">Fast, modern websites that convert visitors into customers. Optimised for SEO, mobile-friendly, and built to grow with your business.</p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>Responsive design</li>
+                  <li>SEO optimization</li>
+                  <li>Content management</li>
+                  <li>Performance tuning</li>
+                </ul>
+              </article>
+              <article className="bg-white p-8 rounded-xl border border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+                <div className="w-12 h-12 mb-6 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg group-hover:rotate-6 group-hover:scale-110 transition-all duration-300"></div>
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Ongoing Maintenance & Support</h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">Keep your systems running smoothly with predictable monthly retainers. Updates, bug fixes, and feature additions without surprise bills.</p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>Fixed-hour retainers</li>
+                  <li>Priority support</li>
+                  <li>Feature updates</li>
+                  <li>Performance monitoring</li>
+                </ul>
               </article>
             </div>
           </div>
         </section>
 
         {/* How We Work */}
-        <section id="how-we-work" className="py-16 bg-gray-50">
+        <section id="how-we-work" className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-              How We Work: Understand → Optimise → Support
+              How We Work: Discover → Build → Deploy → Support
             </h2>
             <div className="grid md:grid-cols-4 gap-8">
               <article className="text-center">
                 <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">1</div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Process Analysis</h3>
-                <p className="text-gray-600">We dive deep into your current workflows to identify inefficiencies and automation opportunities</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Free Automation Assessment</h3>
+                <p className="text-gray-600">We analyse your current workflows to identify automation opportunities and quick wins</p>
               </article>
               <article className="text-center">
                 <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">2</div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">Custom Solution Design</h3>
-                <p className="text-gray-600">Design and build software that fits your exact business processes, not the other way around</p>
+                <p className="text-gray-600">We design AI and web solutions tailored to your business, not generic off-the-shelf tools</p>
               </article>
               <article className="text-center">
                 <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">3</div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Seamless Implementation</h3>
-                <p className="text-gray-600">Careful rollout with training and support to ensure your team adopts the new solutions successfully</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Development & Training</h3>
+                <p className="text-gray-600">We build your solution and train your team to use it effectively from day one</p>
               </article>
               <article className="text-center">
                 <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">4</div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">Ongoing Partnership</h3>
-                <p className="text-gray-600">Continuous maintenance, feature updates, and optimisation as your business evolves</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section id="services" className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-              Services That Transform Your Business
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Workflow Automation</h3>
-                <p className="text-gray-600">Streamline operations and eliminate repetitive manual tasks with intelligent automation solutions.</p>
-              </article>
-              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Custom Integrations</h3>
-                <p className="text-gray-600">Connect your existing tools and systems to work seamlessly together, reducing double handling.</p>
-              </article>
-              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">UX/UI Overhauls</h3>
-                <p className="text-gray-600">Modernise your software interfaces to improve user experience and increase staff satisfaction.</p>
-              </article>
-              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Legacy System Modernisation</h3>
-                <p className="text-gray-600">Upgrade your existing systems without starting from scratch, preserving your data and investments.</p>
-              </article>
-              <article className="p-6 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Ongoing Maintenance & Support</h3>
-                <p className="text-gray-600">Reliable, long-term partnership with fixed-hour retainers for continuous improvements and support.</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-800">Ongoing Optimisation</h3>
+                <p className="text-gray-600">Continuous improvements and support as your business grows and needs evolve</p>
               </article>
             </div>
           </div>
@@ -193,66 +238,64 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Benefits & Outcomes */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
+              Real Results from AI Automation
+            </h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Perth SMBs using our AI automation solutions report significant time savings and improved team productivity.
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <article className="text-center p-6 bg-white rounded-lg shadow-md">
+                <div className="text-4xl font-bold text-blue-600 mb-2">10-20hrs</div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-800">Weekly Time Savings</h3>
+                <p className="text-gray-600">Average time recovered per week through AI automation and workflow optimization</p>
+              </article>
+              <article className="text-center p-6 bg-white rounded-lg shadow-md">
+                <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-800">AI Availability</h3>
+                <p className="text-gray-600">Chatbots and automated systems handle inquiries around the clock</p>
+              </article>
+              <article className="text-center p-6 bg-white rounded-lg shadow-md">
+                <div className="text-4xl font-bold text-blue-600 mb-2">90%</div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-800">Faster Processing</h3>
+                <p className="text-gray-600">AI document processing handles invoices and forms in seconds, not hours</p>
+              </article>
+              <article className="text-center p-6 bg-white rounded-lg shadow-md">
+                <div className="text-4xl font-bold text-blue-600 mb-2">$0</div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-800">Surprise Costs</h3>
+                <p className="text-gray-600">Fixed monthly retainers with no hidden fees or unexpected charges</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
         {/* Local Partnership */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4">
             <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-8 rounded-lg">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
-                Your Local Technology Partner
+                Perth-Based AI & Web Development Experts
               </h2>
               <p className="text-center text-gray-700 text-lg mb-8 max-w-3xl mx-auto">
-                Based in Perth, we understand the unique challenges of Australian businesses.
-                We're committed to building long-term partnerships that help you grow and succeed,
-                with ongoing support that adapts as your business evolves.
+                As a local Perth business, we understand the challenges SMBs face. We build AI automation and web solutions that actually fit how Australian businesses work—with ongoing support whenever you need it.
               </p>
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Local Expertise</h3>
-                  <p className="text-gray-600">Perth-based team with deep understanding of local business needs</p>
+                  <h3 className="font-semibold text-gray-800 mb-2">Local & Accessible</h3>
+                  <p className="text-gray-600">Perth-based team available during AWST business hours for real-time support</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Collaborative Approach</h3>
-                  <p className="text-gray-600">We work alongside your team, not as an external vendor</p>
+                  <h3 className="font-semibold text-gray-800 mb-2">SMB-Focused</h3>
+                  <p className="text-gray-600">We specialize in solutions for small-to-medium businesses, not enterprise complexity</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Ongoing Commitment</h3>
-                  <p className="text-gray-600">Long-term partnership focused on your continued success</p>
+                  <h3 className="font-semibold text-gray-800 mb-2">No Lock-In Contracts</h3>
+                  <p className="text-gray-600">Flexible monthly retainers—scale up or down as your needs change</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits & Outcomes */}
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
-              Measurable Results You Can Count On
-            </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Our custom software solutions deliver tangible benefits that directly impact your bottom line and team satisfaction.
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">60%</div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">Reduction in Admin Time</h3>
-                <p className="text-gray-600">Eliminate repetitive tasks and paperwork with intelligent automation</p>
-              </article>
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">100%</div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">Process Integration</h3>
-                <p className="text-gray-600">Connect all your tools for seamless, efficient workflows</p>
-              </article>
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">∞</div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">Ongoing Support</h3>
-                <p className="text-gray-600">Reliable partnership with fixed-hour retainers and no surprise costs</p>
-              </article>
-              <article className="text-center p-6 bg-gray-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">↗</div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">Staff Satisfaction</h3>
-                <p className="text-gray-600">Employees focus on meaningful work, not admin headaches</p>
-              </article>
             </div>
           </div>
         </section>
@@ -284,14 +327,17 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contact" className="py-16 bg-blue-600 text-white">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Ready to Streamline Your Business?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Ready to Automate Your Business?</h2>
+            <p className="text-center text-lg mb-8 max-w-2xl mx-auto">
+              Get a free automation assessment. We'll identify quick wins and show you exactly how AI can save your team 10+ hours per week.
+            </p>
 
             <div className="grid md:grid-cols-2 gap-10">
               {/* Contact Form */}
               <div>
                 <p className="text-md pb-2 leading-relaxed">
-                  Tell us about your current software challenges and workflow inefficiencies.
-                  We'll get back to you with tailored advice and a clear path forward to optimise your business processes.
+                  Tell us about your biggest time-wasters—repetitive tasks, manual data entry, customer inquiries.
+                  We'll respond within 24 hours with specific automation ideas for your business.
                 </p>
                 <ContactForm />
               </div>
@@ -311,7 +357,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p>Based in Perth, Australia | Serving Established Businesses Worldwide</p>
+              <p>AI Automation & Web Development | Perth, Western Australia | Serving SMBs Across Australia</p>
             </div>
           </div>
         </div>

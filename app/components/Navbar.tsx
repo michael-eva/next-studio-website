@@ -13,6 +13,23 @@ export default function Navbar() {
         setIsMenuOpen(false);
     };
 
+    const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const navbarHeight = 64; // h-16 = 64px
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <header className="bg-white shadow-lg fixed w-full z-50">
             <div className="max-w-6xl mx-auto px-4">
@@ -24,9 +41,27 @@ export default function Navbar() {
                         </Link>
                     </div>
                     <nav className="hidden md:flex space-x-8">
-                        <a href="/#services" className="text-gray-600 hover:text-gray-900 transition duration-300">Services</a>
-                        <a href="/#how-we-work" className="text-gray-600 hover:text-gray-900 transition duration-300">How We Work</a>
-                        <a href="/#case-studies" className="text-gray-600 hover:text-gray-900 transition duration-300">About</a>
+                        <a
+                            href="/#services"
+                            onClick={(e) => handleSmoothScroll(e, '#services')}
+                            className="text-gray-600 hover:text-gray-900 transition duration-300 cursor-pointer"
+                        >
+                            Services
+                        </a>
+                        <a
+                            href="/#how-we-work"
+                            onClick={(e) => handleSmoothScroll(e, '#how-we-work')}
+                            className="text-gray-600 hover:text-gray-900 transition duration-300 cursor-pointer"
+                        >
+                            How We Work
+                        </a>
+                        <a
+                            href="/#case-studies"
+                            onClick={(e) => handleSmoothScroll(e, '#case-studies')}
+                            className="text-gray-600 hover:text-gray-900 transition duration-300 cursor-pointer"
+                        >
+                            About
+                        </a>
                         <Link
                             href="/blog"
                             className={`${isBlogPage
@@ -62,8 +97,10 @@ export default function Navbar() {
                         </svg>
                     </button>
                     <div className="hidden md:block">
-                        <a href="/#contact"
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md flex items-center gap-2">
+                        <a
+                            href="/#contact"
+                            onClick={(e) => handleSmoothScroll(e, '#contact')}
+                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md flex items-center gap-2 cursor-pointer">
                             <Mail className="w-4 h-4" />
                             Get In Touch
                         </a>
@@ -71,19 +108,22 @@ export default function Navbar() {
                 </div>
                 <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
                     <div className="px-2 pt-2 pb-3 space-y-1 bg-white">
-                        <a href="/#services"
-                            onClick={handleMenuItemClick}
-                            className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300">
+                        <a
+                            href="/#services"
+                            onClick={(e) => handleSmoothScroll(e, '#services')}
+                            className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300 cursor-pointer">
                             Services
                         </a>
-                        <a href="/#how-we-work"
-                            onClick={handleMenuItemClick}
-                            className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300">
+                        <a
+                            href="/#how-we-work"
+                            onClick={(e) => handleSmoothScroll(e, '#how-we-work')}
+                            className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300 cursor-pointer">
                             How We Work
                         </a>
-                        <a href="/#case-studies"
-                            onClick={handleMenuItemClick}
-                            className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300">
+                        <a
+                            href="/#case-studies"
+                            onClick={(e) => handleSmoothScroll(e, '#case-studies')}
+                            className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition duration-300 cursor-pointer">
                             About
                         </a>
                         <Link
@@ -100,9 +140,10 @@ export default function Navbar() {
                             </svg>
                         </Link>
                         <div className="border-t border-gray-200 mt-2">
-                            <a href="/#contact"
-                                onClick={handleMenuItemClick}
-                                className="block px-3 py-3 mt-2 text-white bg-blue-600 hover:bg-blue-700 transition duration-300 text-center rounded-lg mx-2">
+                            <a
+                                href="/#contact"
+                                onClick={(e) => handleSmoothScroll(e, '#contact')}
+                                className="block px-3 py-3 mt-2 text-white bg-blue-600 hover:bg-blue-700 transition duration-300 text-center rounded-lg mx-2 cursor-pointer">
                                 Book a Free Consultation
                             </a>
                         </div>
