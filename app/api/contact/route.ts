@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { submitContactForm } from "./helper";
 import { sendEmail } from "@/app/services/resend";
 
 export async function POST(request: NextRequest) {
@@ -20,13 +19,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
-    await submitContactForm({
-      name: name.toString(),
-      email: email.toString(),
-      subject: subject.toString(),
-      message: message.toString(),
-    });
     // send the contact email to michael@extensa.studio
     const responseEmail = await sendEmail({
       to: "michael@extensa.studio",
