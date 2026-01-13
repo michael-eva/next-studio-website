@@ -16,7 +16,7 @@ const BlogPost = () => {
                 <header className="mb-12">
                     <div className="prose max-w-none text-lg text-gray-600">
                         <p className="mb-6">
-                            When building software, companies move through different stages to validate, design, and test their products before launching at scale. The four key stages—<strong>Proof of Concept (PoC), Prototype, Minimum Viable Product (MVP), and Pilot</strong>—each serve a distinct purpose in the <strong>software development lifecycle</strong>.
+                            When building software, companies move through different stages to validate, design, and test their products before launching at scale. The four key stages - <strong>Proof of Concept (PoC), Prototype, Minimum Viable Product (MVP), and Pilot</strong> - each serve a distinct purpose in the <strong>software development lifecycle</strong>.
                         </p>
                     </div>
                 </header>
@@ -149,7 +149,7 @@ const BlogPost = () => {
 
                         <div className="bg-purple-50 p-4 rounded-lg">
                             <p className="text-gray-700">
-                                <strong>Example:</strong> A food delivery startup launches an MVP with only essential features—restaurant browsing, ordering, and payments—before expanding to add ratings, tracking, and loyalty programs.
+                                <strong>Example:</strong> A food delivery startup launches an MVP with only essential features - restaurant browsing, ordering, and payments - before expanding to add ratings, tracking, and loyalty programs.
                             </p>
                         </div>
                     </div>

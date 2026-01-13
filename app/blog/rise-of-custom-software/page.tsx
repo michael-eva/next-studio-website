@@ -23,7 +23,7 @@ const BlogPost = () => {
                     <h2 className="text-2xl font-bold text-gray-900 mb-6">The SaaS Trap: A Story of Compromise</h2>
                     <div className="prose max-w-none text-gray-600">
                         <p className="mb-6">
-                            A few years ago, while working at a security company, I was tasked with finding field management software that could streamline operations for both office and on-site teams. What followed was weeks of research, demos, and meetings with sales teams—only to discover that every SaaS solution had glaring gaps. One platform excelled at job tracking but lacked custom fields. Another allowed customisation but had no GPS tracking. All required us to bend <em>our</em> workflows to fit <em>their</em> limitations.
+                            A few years ago, while working at a security company, I was tasked with finding field management software that could streamline operations for both office and on-site teams. What followed was weeks of research, demos, and meetings with sales teams - only to discover that every SaaS solution had glaring gaps. One platform excelled at job tracking but lacked custom fields. Another allowed customisation but had no GPS tracking. All required us to bend <em>our</em> workflows to fit <em>their</em> limitations.
                         </p>
                         <p className="mb-6">
                             After three exhausting weeks, the company ignored my recommendations and opted for a tool they stumbled upon at a trade show. It wasn't designed for their use case, but they signed a 12-month contract anyway. The result? A Frankenstein setup: two apps duct-taped together, frustrated employees (who resented learning clunky systems), and a team stuck with a "solution" that never truly solved anything.
@@ -114,10 +114,10 @@ const BlogPost = () => {
                 <section className="bg-gray-50 p-6 rounded-lg">
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">The Future Is Tailored</h2>
                     <p className="text-gray-700">
-                        The SaaS model isn't dead—it's just no longer the default. For standardised tasks, it remains a powerhouse. But for businesses where workflows are unique, custom software isn't a luxury; it's a competitive edge.
+                        The SaaS model isn't dead - it's just no longer the default. For standardised tasks, it remains a powerhouse. But for businesses where workflows are unique, custom software isn't a luxury; it's a competitive edge.
                     </p>
                     <p className="text-gray-700 mt-4">
-                        The future isn't about choosing between custom or SaaS—it's about knowing which workflows deserve tailored solutions and which can thrive with standardised tools.
+                        The future isn't about choosing between custom or SaaS - it's about knowing which workflows deserve tailored solutions and which can thrive with standardised tools.
                     </p>
                 </section>
             </article>

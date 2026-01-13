@@ -13,7 +13,7 @@ const BlogPost = () => {
                 <header className="mb-12">
                     <div className="prose max-w-none text-lg text-gray-600">
                         <p className="mb-4">
-                            Many product teams assume that <strong>Proof of Concept (PoC), Prototype, MVP, and Pilot</strong> follow a strict order—but that's not always true. Depending on your <strong>project's risk, audience, and goals</strong>, these stages can overlap, repeat, or even be skipped entirely.
+                            Many product teams assume that <strong>Proof of Concept (PoC), Prototype, MVP, and Pilot</strong> follow a strict order - but that's not always true. Depending on your <strong>project's risk, audience, and goals</strong>, these stages can overlap, repeat, or even be skipped entirely.
                         </p>
                         <p className="text-xl font-medium text-gray-700 italic mb-4">
                             So, how do you know the right order for your project?
@@ -190,7 +190,7 @@ const BlogPost = () => {
                     <ul className="space-y-3">
                         <li className="flex items-start">
                             <span className="text-green-500 mr-2 mt-1">✓</span>
-                            <p className="text-gray-700">These stages <strong>aren't rigid</strong>—they overlap, evolve, and repeat.</p>
+                            <p className="text-gray-700">These stages <strong>aren't rigid</strong> - they overlap, evolve, and repeat.</p>
                         </li>
                         <li className="flex items-start">
                             <span className="text-green-500 mr-2 mt-1">✓</span>
@@ -198,7 +198,7 @@ const BlogPost = () => {
                         </li>
                         <li className="flex items-start">
                             <span className="text-green-500 mr-2 mt-1">✓</span>
-                            <p className="text-gray-700">Not every project <strong>needs all four stages</strong>—skip what isn't necessary.</p>
+                            <p className="text-gray-700">Not every project <strong>needs all four stages</strong> - skip what isn't necessary.</p>
                         </li>
                     </ul>
                 </section>

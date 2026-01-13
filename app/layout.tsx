@@ -15,22 +15,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Automation & Web Development Perth | Extensa - SMB Solutions",
-  description: "Perth-based AI automation and web development for SMBs. Save 10-20 hours weekly with AI chatbots, document processing, and custom web apps. Free automation assessment available.",
-  keywords: "AI automation Perth, web development Perth, AI chatbot development, document automation, workflow automation, custom web applications, Perth SMB software, business automation Australia",
+  title: "Practical Software & AI for Business Operations | Extensa",
+  description:
+    "Extensa designs and implements practical software — often with AI — that fits into existing business systems and workflows. Focused on reducing friction, not forcing change.",
+
+  keywords:
+    "business software, AI applications, workflow tools, operational software, AI-assisted workflows, system integration, internal tools, Perth software",
+
   openGraph: {
-    title: "AI Automation & Web Development for Perth SMBs | Extensa",
-    description: "Stop wasting time on repetitive tasks. AI-powered automation and custom web apps for Perth SMBs. Chatbots, document processing, workflow automation. Free assessment.",
+    title: "Software That Fits How Your Business Works | Extensa",
+    description:
+      "We build practical tools — often with AI — that sit alongside existing systems to reduce friction and improve how work gets done.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
     locale: "en_AU",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation & Web Development Perth | Extensa",
-    description: "Perth SMBs save 10-20 hours weekly with our AI automation. Chatbots, document processing, custom web apps. Get your free automation assessment.",
+    title: "Software That Fits How Your Business Works | Extensa",
+    description:
+      "Practical applications with AI built in — designed to remove friction, not add complexity.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
   },
+
   alternates: {
     canonical: "https://www.extensa.studio",
   },
