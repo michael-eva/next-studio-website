@@ -1,4 +1,5 @@
 import ContactForm from './components/ContactForm'
+import ClientLogos from './components/ClientLogos'
 import { FiTool, FiCpu, FiBox, FiLink, FiCheck, FiArrowRight, FiFileText, FiUsers, FiMessageSquare, FiCode } from 'react-icons/fi'
 
 export default function Home() {
@@ -33,6 +34,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Client Logos */}
+        <ClientLogos />
 
         {/* What Extensa Does */}
         <section className="py-12 sm:py-16 md:py-20 bg-white border-y border-gray-200">
