@@ -71,19 +71,22 @@ export default function Navbar() {
     };
 
     const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-        e.preventDefault();
         setIsMenuOpen(false);
 
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            const navbarHeight = 64; // h-16 = 64px
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        // Only intercept for smooth scroll when on home page; otherwise let the link navigate
+        if (isHomePage) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const navbarHeight = 64; // h-16 = 64px
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     };
 
