@@ -12,6 +12,8 @@ const clients: Client[] = [
     { imageSrc: '/projects/west-sure.png', alt: 'West-Sure', backgroundColor: '#233690' },
     { imageSrc: '/projects/scriptoai.svg', alt: 'ScriptoAI' },
     { imageSrc: '/projects/purple-circle.webp', alt: 'Purple Circle Financial Services' },
+    { imageSrc: '/projects/coursebox.webp', alt: 'Coursebox AI', backgroundColor: '#AD24E7' },
+
 ];
 
 const ClientLogo = ({ client }: { client: Client }) => (
