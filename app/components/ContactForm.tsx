@@ -3,18 +3,34 @@
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'sent'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: wire up to a real email/API endpoint.
-    setStatus('sent');
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.get('name'),
+          email: data.get('email'),
+          message: data.get('message'),
+        }),
+      });
+      if (!res.ok) throw new Error('Request failed');
+      setStatus('sent');
+    } catch {
+      setStatus('error');
+    }
   };
 
   if (status === 'sent') {
     return (
       <p className="text-[--ink] font-medium">
-        Thanks — I&apos;ll be in touch shortly.
+        Thanks, I&apos;ll be in touch shortly.
       </p>
     );
   }
@@ -30,7 +46,8 @@ export default function ContactForm() {
           name="name"
           type="text"
           required
-          className="border border-[--line] rounded-md px-3 py-2 bg-white text-[--ink] focus:outline-none focus:border-[--signal]"
+          placeholder="Jane Smith"
+          className="border border-[--line] rounded-md px-3.5 py-2.5 bg-[--paper] text-[--ink] placeholder:text-[--ink-soft]/50 transition-colors focus:outline-none focus:border-[--signal] focus:ring-2 focus:ring-[--signal]/25 focus:bg-white"
         />
       </div>
 
@@ -43,7 +60,8 @@ export default function ContactForm() {
           name="email"
           type="email"
           required
-          className="border border-[--line] rounded-md px-3 py-2 bg-white text-[--ink] focus:outline-none focus:border-[--signal]"
+          placeholder="jane@company.com.au"
+          className="border border-[--line] rounded-md px-3.5 py-2.5 bg-[--paper] text-[--ink] placeholder:text-[--ink-soft]/50 transition-colors focus:outline-none focus:border-[--signal] focus:ring-2 focus:ring-[--signal]/25 focus:bg-white"
         />
       </div>
 
@@ -56,15 +74,23 @@ export default function ContactForm() {
           name="message"
           rows={4}
           required
-          className="border border-[--line] rounded-md px-3 py-2 bg-white text-[--ink] focus:outline-none focus:border-[--signal]"
+          placeholder="e.g. We spend hours a week re-typing data between our CRM and spreadsheets…"
+          className="border border-[--line] rounded-md px-3.5 py-2.5 bg-[--paper] text-[--ink] placeholder:text-[--ink-soft]/50 transition-colors focus:outline-none focus:border-[--signal] focus:ring-2 focus:ring-[--signal]/25 focus:bg-white"
         />
       </div>
 
+      {status === 'error' && (
+        <p className="text-sm text-red-600">
+          Something went wrong sending that. Try again, or email michael@extensa.studio directly.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="inline-flex items-center justify-center gap-2 bg-[--signal] text-[--ink] px-6 py-3 rounded-md font-semibold hover:bg-[--signal-deep] transition-colors"
+        disabled={status === 'sending'}
+        className="inline-flex items-center justify-center gap-2 bg-[--signal] text-[--ink] px-6 py-3 rounded-md font-semibold hover:bg-[--signal-deep] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Send
+        {status === 'sending' ? 'Sending…' : 'Send'}
       </button>
     </form>
   );

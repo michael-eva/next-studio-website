@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI & Custom Software for WA Businesses | Extensa — Michael Eva",
+  title: "AI & Custom Software for WA Businesses | Extensa | Michael Eva",
   description:
     "I find the bottlenecks in how your business runs and fix them with AI and custom software. Perth-based, working with financial services, property, recruitment and professional services.",
 
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Software That Fits How Your Business Works | Extensa",
     description:
-      "We build practical tools — often with AI — that sit alongside existing systems to reduce friction and improve how work gets done.",
+      "We build practical tools, often with AI, that sit alongside existing systems to reduce friction and improve how work gets done.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
     locale: "en_AU",
     type: "website",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Software That Fits How Your Business Works | Extensa",
     description:
-      "Practical applications with AI built in — designed to remove friction, not add complexity.",
+      "Practical applications with AI built in, designed to remove friction, not add complexity.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
   },
 

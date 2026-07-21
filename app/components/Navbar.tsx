@@ -2,13 +2,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import { Mail } from 'lucide-react';
+import { FiMail } from 'react-icons/fi';
 
 const HOME_SECTIONS = ['services', 'case-studies', 'how-we-work', 'contact'];
 
 export default function Navbar() {
     const pathname = usePathname();
-    const isBlogPage = pathname?.startsWith('/blog');
     const isHomePage = pathname === '/';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('');
@@ -151,18 +150,6 @@ export default function Navbar() {
                         >
                             Financial services
                         </Link>
-                        <Link
-                            href="/blog"
-                            className={`${isBlogPage
-                                ? 'text-[--accent-deep] font-semibold'
-                                : 'text-gray-600'
-                                } hover:text-[--accent-deep] transition duration-300 inline-flex items-center gap-1`}
-                        >
-                            Blog
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </Link>
                     </nav>
                     <button
                         className="md:hidden p-2"
@@ -190,7 +177,7 @@ export default function Navbar() {
                             href="/#contact"
                             onClick={(e) => handleSmoothScroll(e, '#contact')}
                             className="bg-[--signal] text-[--ink] px-4 py-2 rounded-md hover:bg-[--signal-deep] transition duration-300 font-semibold flex items-center gap-2 cursor-pointer">
-                            <Mail className="w-4 h-4" />
+                            <FiMail className="w-4 h-4" />
                             Book a call
                         </a>
                     </div>
@@ -224,19 +211,6 @@ export default function Navbar() {
                                 } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 cursor-pointer rounded-lg`}>
                             Work
                         </a>
-                        <Link
-                            href="/blog"
-                            onClick={handleMenuItemClick}
-                            className={`block px-3 py-2 ${isBlogPage
-                                ? 'text-[--accent-deep] font-semibold bg-[--accent-soft]'
-                                : 'text-gray-600'
-                                } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 flex items-center gap-1 rounded-lg`}
-                        >
-                            Blog
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </Link>
                         <div className="border-t border-gray-200 mt-2">
                             <a
                                 href="/#contact"

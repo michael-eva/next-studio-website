@@ -15,12 +15,12 @@ const clients: Client[] = [
     { imageSrc: '/projects/purple-circle.webp', alt: 'Purple Circle Financial Services' },
     { imageSrc: '/projects/coursebox.webp', alt: 'Coursebox AI', backgroundColor: '#AD24E7' },
     { imageSrc: '/projects/dr-analytics.webp', alt: 'DR Analytics' },
-    { imageSrc: '/projects/epca-white.png', alt: 'EPCA — Electric Power Conversions Australia', backgroundColor: '#0E1B2C' },
+    { imageSrc: '/projects/epca-white.png', alt: 'EPCA, Electric Power Conversions Australia', backgroundColor: '#0E1B2C' },
 ];
 
 const ClientLogo = ({ client }: { client: Client }) => (
     <div
-        className="flex items-center justify-center rounded-lg p-6 transition-transform hover:scale-105"
+        className="flex items-center justify-center rounded-lg p-6 grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100 hover:scale-105"
         style={{ backgroundColor: client.backgroundColor || 'white' }}
     >
         <img

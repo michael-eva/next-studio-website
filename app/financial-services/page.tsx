@@ -3,7 +3,7 @@ import { CAL_URL, AUDIT_URL } from '../lib/site'
 import { FiCalendar, FiActivity } from 'react-icons/fi'
 
 export const metadata: Metadata = {
-  title: 'AI & Automation for Financial Services | Extensa — Perth',
+  title: 'AI & Automation for Financial Services | Extensa, Perth',
   description:
     'Onboarding, compliance checks and document chasing automated for WA financial services businesses. Built in Perth by Michael Eva.',
 }
@@ -20,6 +20,8 @@ const Ctas = () => (
   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
     <a
       href={CAL_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex items-center justify-center gap-2 bg-[--signal] text-[--ink] px-7 py-4 rounded-md font-semibold hover:bg-[--signal-deep] transition-colors"
     >
       <FiCalendar className="w-5 h-5" />
@@ -27,6 +29,8 @@ const Ctas = () => (
     </a>
     <a
       href={AUDIT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-md font-semibold border border-[--ink] text-[--ink] hover:bg-[--ink] hover:text-white transition-colors"
     >
       <FiActivity className="w-5 h-5" />
@@ -44,7 +48,7 @@ export default function FinancialServices() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <p className="eyebrow mb-5">Financial services · Perth, WA</p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] mb-6">
-              AI and automation for financial services businesses — built in Perth.
+              AI and automation for financial services businesses, built in Perth.
             </h1>
             <p className="text-lg sm:text-xl text-[--ink-soft] leading-relaxed max-w-2xl mb-9">
               Onboarding, compliance checks and document chasing don&apos;t need to run on manual admin. I build the
@@ -84,11 +88,11 @@ export default function FinancialServices() {
                 between systems, and compliance checks done manually. Skilled people were spending their week on admin.
               </p>
               <p>
-                I built an automation layer over their existing systems — no rip-and-replace — that handles the
+                I built an automation layer over their existing systems, with no rip-and-replace, that handles the
                 collection, checking and data entry. Phase 1 is live in production.
               </p>
               <p className="font-mono text-base text-[--signal]">
-                The engagement has continued into phases 2 and 3 — the clearest evidence the first phase worked.
+                The engagement has continued into phases 2 and 3, which is the clearest evidence the first phase worked.
               </p>
             </div>
           </div>
@@ -102,7 +106,7 @@ export default function FinancialServices() {
               Documents, checks and repeatable process
             </h2>
             <p className="text-[--ink-soft] text-lg leading-relaxed max-w-2xl">
-              Financial services runs on exactly the work AI is now good at — and exactly where errors are expensive.
+              Financial services runs on exactly the work AI is now good at, and exactly where errors are expensive.
               So the approach is simple: AI does the reading, sorting and drafting; your people keep the judgement and
               sign-off. Nothing goes out without oversight.
             </p>
