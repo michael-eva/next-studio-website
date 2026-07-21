@@ -1,43 +1,37 @@
-import { Resend } from "resend";
+import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 interface EmailData {
-  to: string;
-  subject: string;
-  text: string;
-  html?: string;
-  bcc?: string[];
+  to: string
+  subject: string
+  text: string
+  html?: string
+  bcc?: string[]
+  replyTo?: string
 }
 
-export async function sendEmail({ to, subject, text, html, bcc }: EmailData) {
-  try {
-    const { data, error } = await resend.emails.send({
-      from: "Extensa Studio <michael@notifications.extensa.studio>",
-      to: [to],
-      subject,
-      text,
-      bcc,
-      html: html || text.replace(/\n/g, "<br>"),
-    });
+export async function sendEmail({ to, subject, text, html, bcc, replyTo }: EmailData) {
+  const { data, error } = await resend.emails.send({
+    from: 'Extensa Studio <michael@notifications.extensa.studio>',
+    to: [to],
+    subject,
+    text,
+    bcc,
+    replyTo,
+    html: html || text.replace(/\n/g, '<br>'),
+  })
 
-    if (error) {
-      console.error("Resend error:", error);
-      throw new Error("Failed to send email");
-    }
-
-    return data;
-  } catch (error) {
-    console.error("Email sending error:", error);
-    throw error;
+  if (error) {
+    console.error('Resend error:', error)
+    throw new Error('Failed to send email')
   }
+
+  return data
 }
 
-export async function sendEmailWithAccessCode(
-  accessCode: string,
-  email: string
-) {
-  const text = `Hello,\n\nThank you for signing in to Extensa Studio!\n\nYour access code is: ${accessCode}\n\nPlease enter this code to complete your sign-in. If you did not request this code, you can safely ignore this email.\n\nBest regards,\nThe Extensa Studio Team`;
+export async function sendEmailWithAccessCode(accessCode: string, email: string) {
+  const text = `Hello,\n\nThank you for signing in to Extensa Studio!\n\nYour access code is: ${accessCode}\n\nPlease enter this code to complete your sign-in. If you did not request this code, you can safely ignore this email.\n\nBest regards,\nThe Extensa Studio Team`
   const html = `
     <p>Hello,</p>
     <p>Thank you for signing in to <strong>Extensa Studio</strong>!</p>
@@ -50,12 +44,12 @@ export async function sendEmailWithAccessCode(
     <p>Please enter this code to complete your sign-in.<br>
     If you did not request this code, you can safely ignore this email.</p>
     <p style="margin-top: 32px;">Best regards,<br>The Extensa Studio Team</p>
-  `;
+  `
   await sendEmail({
-    bcc: ["michael@extensa.studio"],
+    bcc: ['michael@extensa.studio'],
     to: email,
-    subject: "Your access code",
+    subject: 'Your access code',
     text,
     html,
-  });
+  })
 }

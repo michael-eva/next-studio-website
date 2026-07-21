@@ -2,13 +2,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import { Mail } from 'lucide-react';
+import { FiMail } from 'react-icons/fi';
 
-const HOME_SECTIONS = ['services', 'how-we-work', 'case-studies', 'contact'];
+const HOME_SECTIONS = ['services', 'case-studies', 'how-we-work', 'contact'];
 
 export default function Navbar() {
     const pathname = usePathname();
-    const isBlogPage = pathname?.startsWith('/blog');
     const isHomePage = pathname === '/';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('');
@@ -105,13 +104,13 @@ export default function Navbar() {
     };
 
     return (
-        <header className="bg-white shadow-lg fixed w-full z-50">
+        <header className="bg-[--paper]/95 backdrop-blur border-b border-[--line] fixed w-full z-50">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
                         <Link href="/" onClick={handleLogoClick} className="flex items-center">
                             <img src="/extensa-logo.png" alt="Extensa Logo" className="h-12" />
-                            <p className="text-2xl font-bold text-[#111827]">Extensa</p>
+                            <p className="text-2xl font-bold text-[--ink]">Extensa</p>
                         </Link>
                     </div>
                     <nav className="hidden md:flex space-x-8">
@@ -119,43 +118,37 @@ export default function Navbar() {
                             href="/#services"
                             onClick={(e) => handleSmoothScroll(e, '#services')}
                             className={`${isActive('services')
-                                ? 'text-blue-600 font-semibold'
+                                ? 'text-[--accent-deep] font-semibold'
                                 : 'text-gray-600'
-                                } hover:text-blue-600 transition duration-300 cursor-pointer`}
+                                } hover:text-[--accent-deep] transition duration-300 cursor-pointer`}
                         >
-                            How We Work
+                            What I fix
                         </a>
                         <a
                             href="/#how-we-work"
                             onClick={(e) => handleSmoothScroll(e, '#how-we-work')}
                             className={`${isActive('how-we-work')
-                                ? 'text-blue-600 font-semibold'
+                                ? 'text-[--accent-deep] font-semibold'
                                 : 'text-gray-600'
-                                } hover:text-blue-600 transition duration-300 cursor-pointer`}
+                                } hover:text-[--accent-deep] transition duration-300 cursor-pointer`}
                         >
-                            Our Process
+                            Process
                         </a>
                         <a
                             href="/#case-studies"
                             onClick={(e) => handleSmoothScroll(e, '#case-studies')}
                             className={`${isActive('case-studies')
-                                ? 'text-blue-600 font-semibold'
+                                ? 'text-[--accent-deep] font-semibold'
                                 : 'text-gray-600'
-                                } hover:text-blue-600 transition duration-300 cursor-pointer`}
+                                } hover:text-[--accent-deep] transition duration-300 cursor-pointer`}
                         >
-                            About
+                            Work
                         </a>
                         <Link
-                            href="/blog"
-                            className={`${isBlogPage
-                                ? 'text-blue-600 font-semibold'
-                                : 'text-gray-600'
-                                } hover:text-blue-600 transition duration-300 inline-flex items-center gap-1`}
+                            href="/financial-services"
+                            className={`${pathname === '/financial-services' ? 'text-[--accent-deep] font-semibold' : 'text-gray-600'} hover:text-[--accent-deep] transition duration-300`}
                         >
-                            Blog
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
+                            Financial services
                         </Link>
                     </nav>
                     <button
@@ -183,9 +176,9 @@ export default function Navbar() {
                         <a
                             href="/#contact"
                             onClick={(e) => handleSmoothScroll(e, '#contact')}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md flex items-center gap-2 cursor-pointer">
-                            <Mail className="w-4 h-4" />
-                            Get In Touch
+                            className="bg-[--signal] text-[--ink] px-4 py-2 rounded-md hover:bg-[--signal-deep] transition duration-300 font-semibold flex items-center gap-2 cursor-pointer">
+                            <FiMail className="w-4 h-4" />
+                            Book a call
                         </a>
                     </div>
                 </div>
@@ -195,48 +188,35 @@ export default function Navbar() {
                             href="/#services"
                             onClick={(e) => handleSmoothScroll(e, '#services')}
                             className={`block px-3 py-2 ${isActive('services')
-                                ? 'text-blue-600 font-semibold bg-blue-50'
+                                ? 'text-[--accent-deep] font-semibold bg-[--accent-soft]'
                                 : 'text-gray-600'
-                                } hover:text-blue-600 hover:bg-blue-50 transition duration-300 cursor-pointer rounded-lg`}>
+                                } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 cursor-pointer rounded-lg`}>
                             Services
                         </a>
                         <a
                             href="/#how-we-work"
                             onClick={(e) => handleSmoothScroll(e, '#how-we-work')}
                             className={`block px-3 py-2 ${isActive('how-we-work')
-                                ? 'text-blue-600 font-semibold bg-blue-50'
+                                ? 'text-[--accent-deep] font-semibold bg-[--accent-soft]'
                                 : 'text-gray-600'
-                                } hover:text-blue-600 hover:bg-blue-50 transition duration-300 cursor-pointer rounded-lg`}>
-                            How We Work
+                                } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 cursor-pointer rounded-lg`}>
+                            What I fix
                         </a>
                         <a
                             href="/#case-studies"
                             onClick={(e) => handleSmoothScroll(e, '#case-studies')}
                             className={`block px-3 py-2 ${isActive('case-studies')
-                                ? 'text-blue-600 font-semibold bg-blue-50'
+                                ? 'text-[--accent-deep] font-semibold bg-[--accent-soft]'
                                 : 'text-gray-600'
-                                } hover:text-blue-600 hover:bg-blue-50 transition duration-300 cursor-pointer rounded-lg`}>
-                            About
+                                } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 cursor-pointer rounded-lg`}>
+                            Work
                         </a>
-                        <Link
-                            href="/blog"
-                            onClick={handleMenuItemClick}
-                            className={`block px-3 py-2 ${isBlogPage
-                                ? 'text-blue-600 font-semibold bg-blue-50'
-                                : 'text-gray-600'
-                                } hover:text-blue-600 hover:bg-blue-50 transition duration-300 flex items-center gap-1 rounded-lg`}
-                        >
-                            Blog
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </Link>
                         <div className="border-t border-gray-200 mt-2">
                             <a
                                 href="/#contact"
                                 onClick={(e) => handleSmoothScroll(e, '#contact')}
-                                className="block px-3 py-3 mt-2 text-white bg-blue-600 hover:bg-blue-700 transition duration-300 text-center rounded-lg mx-2 cursor-pointer">
-                                Get In Touch
+                                className="block px-3 py-3 mt-2 text-[--ink] bg-[--signal] hover:bg-[--signal-deep] transition duration-300 text-center rounded-lg mx-2 cursor-pointer font-semibold">
+                                Book a call
                             </a>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from './components/Navbar'
@@ -9,15 +9,21 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500","600","700"],
+});
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Practical Software & AI for Business Operations | Extensa",
+  title: "AI & Custom Software for WA Businesses | Extensa | Michael Eva",
   description:
-    "Extensa designs and implements practical software — often with AI — that fits into existing business systems and workflows. Focused on reducing friction, not forcing change.",
+    "I find the bottlenecks in how your business runs and fix them with AI and custom software. Perth-based, working with financial services, property, recruitment and professional services.",
 
   keywords:
     "business software, AI applications, workflow tools, operational software, AI-assisted workflows, system integration, internal tools, Perth software",
@@ -25,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Software That Fits How Your Business Works | Extensa",
     description:
-      "We build practical tools — often with AI — that sit alongside existing systems to reduce friction and improve how work gets done.",
+      "We build practical tools, often with AI, that sit alongside existing systems to reduce friction and improve how work gets done.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
     locale: "en_AU",
     type: "website",
@@ -35,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Software That Fits How Your Business Works | Extensa",
     description:
-      "Practical applications with AI built in — designed to remove friction, not add complexity.",
+      "Practical applications with AI built in, designed to remove friction, not add complexity.",
     images: ["https://www.extensa.studio/extensa-logo.png"],
   },
 
@@ -166,7 +172,7 @@ export default function RootLayout({
         }}
       />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
       >
         <noscript>
           <iframe
