@@ -248,6 +248,31 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <p className="eyebrow mb-3">Evidence</p>
             <h2 className="font-display text-3xl md:text-4xl font-bold mb-10">Recent work</h2>
+            <Reveal>
+              <Link
+                href="/case-studies/wa-mortgage-lender"
+                className="card card-accent p-7 md:p-9 mb-5 flex flex-col md:flex-row md:items-center gap-6 md:gap-12 group"
+              >
+                <div className="shrink-0">
+                  <p className="eyebrow mb-3">FEATURED CASE STUDY</p>
+                  <p className="font-display text-5xl md:text-6xl font-bold text-[--signal-deep] leading-none">75%</p>
+                  <p className="mt-2 font-mono text-sm text-[--ink-soft] max-w-[16rem]">
+                    of an FTE&apos;s onboarding work, automated
+                  </p>
+                </div>
+                <div className="flex-1 md:border-l md:border-[--line] md:pl-12">
+                  <h3 className="font-display text-2xl font-semibold mb-2">
+                    Five-figure monthly platform replaced.
+                  </h3>
+                  <p className="text-[--ink-soft] leading-relaxed">
+                    What we replaced, what we built, and what changed for a WA mortgage-lending broker.
+                  </p>
+                  <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-[--signal-deep] group-hover:underline">
+                    Read the case study <FiArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
             <div className="grid md:grid-cols-3 gap-5">
               {work.map((w, i) => (
                 <Reveal key={w.title} delay={i * 80} className="h-full">
@@ -422,6 +447,7 @@ export default function Home() {
             <p>AI &amp; custom software · Perth, Western Australia</p>
           </div>
           <nav className="flex gap-6">
+            <Link href="/case-studies" className="hover:text-white">Case studies</Link>
             <Link href="/financial-services" className="hover:text-white">Financial services</Link>
             <a href={CAL_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">Book a call</a>
           </nav>

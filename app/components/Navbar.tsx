@@ -145,6 +145,12 @@ export default function Navbar() {
                             Work
                         </a>
                         <Link
+                            href="/case-studies"
+                            className={`${pathname.startsWith('/case-studies') ? 'text-[--accent-deep] font-semibold' : 'text-gray-600'} hover:text-[--accent-deep] transition duration-300`}
+                        >
+                            Case studies
+                        </Link>
+                        <Link
                             href="/financial-services"
                             className={`${pathname === '/financial-services' ? 'text-[--accent-deep] font-semibold' : 'text-gray-600'} hover:text-[--accent-deep] transition duration-300`}
                         >
@@ -211,6 +217,15 @@ export default function Navbar() {
                                 } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 cursor-pointer rounded-lg`}>
                             Work
                         </a>
+                        <Link
+                            href="/case-studies"
+                            onClick={handleMenuItemClick}
+                            className={`block px-3 py-2 ${pathname.startsWith('/case-studies')
+                                ? 'text-[--accent-deep] font-semibold bg-[--accent-soft]'
+                                : 'text-gray-600'
+                                } hover:text-[--accent-deep] hover:bg-[--accent-soft] transition duration-300 rounded-lg`}>
+                            Case studies
+                        </Link>
                         <div className="border-t border-gray-200 mt-2">
                             <a
                                 href="/#contact"
