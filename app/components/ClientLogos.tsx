@@ -6,6 +6,7 @@ type Client = {
 }
 
 const clients: Client[] = [
+    { imageSrc: '/projects/westcoast-civil.svg', alt: 'West Coast Civil' },
     { imageSrc: '/projects/kite.svg', alt: 'Kite.Site' },
     { imageSrc: '/projects/betterlabs.svg', alt: 'BetterLabs', backgroundColor: '#2a70f2' },
     { imageSrc: '/projects/vendaly.png', alt: 'Vendaly' },
@@ -16,6 +17,7 @@ const clients: Client[] = [
     { imageSrc: '/projects/coursebox.webp', alt: 'Coursebox AI', backgroundColor: '#AD24E7' },
     { imageSrc: '/projects/dr-analytics.webp', alt: 'DR Analytics' },
     { imageSrc: '/projects/epca-white.png', alt: 'EPCA, Electric Power Conversions Australia', backgroundColor: '#0E1B2C' },
+    { imageSrc: '/projects/everest-tutoring.png', alt: 'Everest Tutoring' },
 ];
 
 const ClientLogo = ({ client }: { client: Client }) => (
