@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackMetaEvent } from '../lib/metaPixel';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -21,6 +22,7 @@ export default function ContactForm() {
         }),
       });
       if (!res.ok) throw new Error('Request failed');
+      trackMetaEvent('Lead', { content_name: 'Contact form' });
       setStatus('sent');
     } catch {
       setStatus('error');
