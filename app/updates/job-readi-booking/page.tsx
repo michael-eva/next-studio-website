@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
+import ZoomableImage from './ZoomableImage'
 
 // Private client update: unlisted (not linked or in the sitemap) and kept out of search engines.
 export const metadata: Metadata = {
@@ -16,14 +16,7 @@ function Screenshot({ shot }: { shot: Shot }) {
   return (
     <figure>
       <div className="overflow-hidden rounded-xl border border-[--line] bg-white">
-        <Image
-          src={`${IMG}/${shot.src}`}
-          alt={shot.alt}
-          width={1400}
-          height={shot.height ?? 813}
-          className="w-full h-auto"
-          sizes="(min-width: 1024px) 560px, 100vw"
-        />
+        <ZoomableImage src={`${IMG}/${shot.src}`} alt={shot.alt} width={1400} height={shot.height ?? 813} />
       </div>
       <figcaption className="mt-3 text-sm text-[--ink-soft] leading-relaxed">{shot.caption}</figcaption>
     </figure>
@@ -102,13 +95,13 @@ export default function JobReadiBookingUpdatePage() {
           <BeforeAfter
             before={[
               {
-                src: 'before-1-location.jpg',
+                src: 'before-1-location-hl.jpg',
                 height: 545,
                 alt: 'Booking portal first step, with six steps including Choose Room',
                 caption: 'Six steps, including Choose Room.',
               },
               {
-                src: 'before-2-room.jpg',
+                src: 'before-2-room-hl.jpg',
                 height: 745,
                 alt: 'Choose Room step listing Rivervale Rooms 1 to 4',
                 caption: 'Clients had to pick one of four identical rooms.',
@@ -116,7 +109,7 @@ export default function JobReadiBookingUpdatePage() {
             ]}
             after={[
               {
-                src: 'after-1-location.jpg',
+                src: 'after-1-location-hl.jpg',
                 height: 545,
                 alt: 'Booking portal first step, with five steps and no room step',
                 caption: 'Five steps. Location, then straight to the time.',
@@ -141,24 +134,24 @@ export default function JobReadiBookingUpdatePage() {
           <BeforeAfter
             before={[
               {
-                src: 'before-3-timeslots.jpg',
+                src: 'before-3-timeslots-hl.jpg',
                 alt: 'Time slot page with a session duration dropdown',
                 caption: 'Clients were asked to choose a duration.',
               },
               {
-                src: 'before-5-selected.jpg',
+                src: 'before-5-selected-hl.jpg',
                 alt: 'Selected time shown as Room 1 with a red Forward button',
                 caption: 'The selected time showed the room number, with a red Forward button.',
               },
             ]}
             after={[
               {
-                src: 'after-2-timeslots.jpg',
+                src: 'after-2-timeslots-hl.jpg',
                 alt: 'Time slot page without a duration choice',
                 caption: 'No duration choice.',
               },
               {
-                src: 'after-3-selected.jpg',
+                src: 'after-3-selected-hl.jpg',
                 alt: 'Selected time highlighted, with a summary and a Continue button',
                 caption: 'The chosen time is highlighted. No room numbers anywhere the client can see.',
               },
@@ -183,19 +176,19 @@ export default function JobReadiBookingUpdatePage() {
           <BeforeAfter
             before={[
               {
-                src: 'before-4-extra-info.jpg',
+                src: 'before-4-extra-info-hl.jpg',
                 alt: 'Extra Information page with medical paperwork in the original order',
                 caption: 'The order the items were created in. Dragging to change it never saved.',
               },
             ]}
             after={[
               {
-                src: 'after-4-admin-order.jpg',
+                src: 'after-4-admin-order-hl.jpg',
                 alt: 'Admin list of booking questions with drag handles and a Group column',
                 caption: 'Drag an item in the admin list. Here, Rio Tinto and Galaxy moved to the top.',
               },
               {
-                src: 'after-5-extra-info.jpg',
+                src: 'after-5-extra-info-hl.jpg',
                 alt: 'Extra Information page with Rio Tinto and Galaxy listed first',
                 caption: 'Clients see the new order straight away.',
               },
@@ -207,33 +200,15 @@ export default function JobReadiBookingUpdatePage() {
         </Section>
 
         <Section index="04 · Next" title="What&apos;s still to come">
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
-            <div className="rounded-xl border border-[--line] bg-white p-6 md:p-8">
-              <h3 className="font-display text-xl font-semibold mb-4">Still being worked on</h3>
-              <ul className="space-y-3 text-[--ink-soft] leading-relaxed">
-                <li>Moving a booking between clinics so it lands in the new clinic&apos;s Google Calendar</li>
-                <li>Closing every room at every clinic in one go for public holidays</li>
-                <li>Extra email recipients on booking confirmations</li>
-                <li>Sending clients who aren&apos;t logged in to the login page, rather than a page not found</li>
-              </ul>
-            </div>
-            <div className="rounded-xl border border-[--line] bg-white p-6 md:p-8">
-              <h3 className="font-display text-xl font-semibold mb-4">A few questions for you</h3>
-              <ul className="space-y-3 text-[--ink-soft] leading-relaxed">
-                <li>
-                  &ldquo;BHP WAIO Medical Assessment&rdquo; appears twice for Rivervale clients. Is one of them
-                  meant to go?
-                </li>
-                <li>Are there clear rules for when a session should be longer than an hour?</li>
-                <li>
-                  Should one employer be able to book two candidates into the same room at the same time? From
-                  the code, the system looks like it allows this today.
-                </li>
-              </ul>
-            </div>
+          <div className="rounded-xl border border-[--line] bg-white p-6 md:p-8 max-w-3xl">
+            <h3 className="font-display text-xl font-semibold mb-4">Still being worked on</h3>
+            <ul className="space-y-3 text-[--ink-soft] leading-relaxed">
+              <li>Moving a booking between clinics so it lands in the new clinic&apos;s Google Calendar</li>
+              <li>Closing every room at every clinic in one go for public holidays</li>
+              <li>Extra email recipients on booking confirmations</li>
+              <li>Sending clients who aren&apos;t logged in to the login page, rather than a page not found</li>
+            </ul>
           </div>
-          <p className="mt-10 text-[--ink-soft]">Happy to walk through any of this. Just reply to my email.</p>
-          <p className="mt-2 font-medium">Michael, Extensa</p>
         </Section>
       </main>
     </div>
